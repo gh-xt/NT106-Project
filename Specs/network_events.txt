@@ -1,0 +1,150 @@
+[Máy chủ]
+ROOM_CHANGE_USER_NAME (tên cũ, tên mới)
+- Cập nhật phía máy chủ tên
+- Gửi tới tất cả khách hàng
+ROOM_USER_NAME_CHANGED (tên cũ, tên mới)
+
+ROOM_SEND_MESSAGE (tin nhắn)
+- Gửi tới tất cả khách hàng
+ROOM_MESSAGE_SENT (tên, tin nhắn)
+
+
+SET_CUPID_LOVERS (tên1, tên2)
+- Kiểm tra xem hành động cupid chưa được thực hiện
+- Tag name1 “LOVER” và name2 “LOVER” ở phía server
+- Gửi tới name1 và name2
+GAME_CUPID_LOVER_SET (other_name) (+vai trò?)
+
+SET_SEER_TARGET (tên)
+- Kiểm tra xem tên còn sống không
+- Gửi cho người thấu thị
+GAME_SEER_ROLE_REVEALED (tên, vai trò)
+
+Loại VOTE = LG_TARGET, MAYOR_ELECTION, VILLAGE_VOTE
+
+ADD_VOTE (loại, tên)
+- Kiểm tra xem tên còn sống không
+- Thêm phiếu bầu vào phía máy chủ tên
+- Gửi (tùy loại) cho khách hàng nhất định
+GAME_VOTE_ADDED (tên)
+
+REMOVE_VOTE (loại, tên)
+- Kiểm tra xem tên còn sống không
+- Xóa bỏ phiếu khỏi tên ở phía máy chủ
+- Gửi (tùy loại) cho khách hàng nhất định
+GAME_VOTE_REMOVED (tên)
+
+WITCH_ACTION = DO_NOTHING, DEATH_POTION, LIFE_POTION, BOTH_POTIONS
+
+SET_WITCH_ACTION (hành động, tên)
+- Kiểm tra xem tên còn sống không (nếu có)
+- Kiểm tra xem hành động đó có khả thi không
+- Tên Tag + Tag LG_TARGET (tùy hành động)
+
+SET_NEW_MAYOR (tên)
+- Kiểm tra xem tên còn sống không
+- Kiểm tra xem chưa có thị trưởng
+- Tag tên THỊ TRƯỞNG
+- Gửi tới tất cả khách hàng
+GAME_MAYOR_CHANGED (tên)
+
+SET_HUNTER_TARGET (tên)
+- Kiểm tra xem tên còn sống không
+- Kiểm tra xem chưa có mục tiêu nào khác
+- Gửi tới tất cả khách hàng
+GAME_PLAYER_DIED (tên, vai trò, How=killedByHunter)
+
+[Khách hàng]
+USER_NAME_SET (tên)
+- Cập nhật tên phía khách hàng
+
+ROOM_USER_NAME_CHANGED (tên cũ, tên mới)
+- Cập nhật tên phía khách hàng
+
+ROOM_USER_LIST_CHANGED (danh sách)
+- Cập nhật danh sách người dùng về phía khách hàng
+
+ROOM_MESSAGE_SENT (tên, tin nhắn)
+- Thêm phía máy khách tin nhắn
+
+ROOM_USER_JOINED (tên)
+- Thêm tên vào danh sách người dùng
+- Thêm một tin nhắn phía khách hàng
+
+ROOM_USER_LEFT (tên)
+- Xóa tên khỏi danh sách người dùng
+- Thêm một tin nhắn phía khách hàng
+
+GAME_SETTING_CHANGED (cài đặt, giá trị mới)
+- Cập nhật cài đặt phía máy khách
+
+TRÒ CHƠI_STARTED()
+- Bắt đầu hẹn giờ ở phía máy khách
+- Hiển thị tin nhắn mỗi giây
+- Khi hết giờ đổi view => GameView
+
+GAME_ROLE_ASSIGNED (vai trò)
+- Cập nhật vai trò về phía khách hàng
+- Thêm một tin nhắn phía khách hàng
+
+GAME_PHASE_CHANGED (giai đoạn)
+- Thêm một tin nhắn phía khách hàng
+
+GAME_CUPID_AWOKEN()
+- Thêm một tin nhắn phía khách hàng
+GAME_CUPID_LOVER_SET (tên khác)
+- Cập nhật màu(?) của cái còn lại trong danh sách
+- Thêm một tin nhắn phía khách hàng
+GAME_CUPID_ASLEEP()
+- Thêm một tin nhắn phía khách hàng
+
+GAME_SEER_AWOKEN()
+- Thêm một tin nhắn phía khách hàng
+GAME_SEER_ROLE_REVEALED (tên, vai trò)
+- Thêm một tin nhắn phía khách hàng
+GAME_SEER_ASLEEP()
+- Thêm một tin nhắn phía khách hàng
+
+GAME_WEREWOLVES_AWOKEN()
+- Thiết lập giao diện bình chọn (LGs)
+- Thêm một tin nhắn phía khách hàng
+GAME_WEREWOLVES_TARGET_SET (tên)
+- Thêm một tin nhắn phía khách hàng
+GAME_WEREWOLVES_ALSEEP()
+- Gỡ cài đặt giao diện bình chọn (LG)
+- Thêm một tin nhắn phía khách hàng
+
+GAME_WITCH_AWOKEN()
+- Thêm một tin nhắn ở phía khách hàng
+GAME_WEREWOLF_TARGET_REVEALED (tên)
+- Nói cho phù thủy biết mục tiêu của LG (tin nhắn?)
+GAME_WITCH_ACTION_SET (hành động, tên)
+- Thêm một tin nhắn phía khách hàng
+GAME_WITCH_ASLEEP()
+- Thêm một tin nhắn phía khách hàng
+
+GAME_MAYO_ELECTION_STARTED()
+- Thiết lập giao diện bình chọn (Sống)
+- Thêm một tin nhắn phía khách hàng
+GAME_MAAYOR_ELECTION_ENDED()
+- Bỏ setup giao diện bình chọn (Sống)
+GAME_MAYOR_CHANGED (tên)
+- Cập nhật tên trong danh sách
+- Thêm một tin nhắn ở phía khách hàng
+
+GAME_DAY_VOTE_STARTED()
+- Thiết lập giao diện bình chọn (Sống)
+- Thêm một tin nhắn phía khách hàng
+GAME_DAY_VOTE_ENDED()
+- Bỏ setup giao diện bình chọn (Sống)
+- Thêm một tin nhắn phía khách hàng
+
+GAME_PLAYER_DIED (tên, vai trò, như thế nào?)
+- Cập nhật tên trong danh sách
+- Thêm một tin nhắn ở phía khách hàng
+GAME_VOTE_ADDED (nguồn, đích)
+- Cập nhật số phiếu bầu
+- Thêm một tin nhắn ở phía khách hàng
+GAME_VOTE_REMOVED (nguồn, đích)
+- Cập nhật số phiếu bầu
+- Thêm một tin nhắn phía khách hàng

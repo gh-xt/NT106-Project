@@ -1,0 +1,52 @@
+Các tính năng (từ sự kiện)
+==========================================
+
+TODO (trường hợp đặc biệt):
+- xử lý trường hợp người chơi ngắt/mất kết nối
+- gửi tin nhắn cho tất cả người chơi
+- giết người chơi
+
+[Máy chủ] (KHÔNG có giao diện - KHÔNG UI)
+- Lưu trữ tất cả khách hàng (chế độ Salon/Room)
+- Tên
+- Gửi sự kiện/tin nhắn
+- Biết liệu máy khách có được kết nối/ngắt kết nối hay không
+- Thêm/xóa khách hàng
+
+- Lưu trữ tất cả người chơi (Chế độ Party/Game)
+- Tên
+- Gửi sự kiện/tin nhắn
+- Thẻ (CRUD)
+- Vai trò
+- Phù thủy => biết các lọ thuốc đã được sử dụng
+- Biết còn sống/chết (=> gắn thẻ?)
+- Thị trưởng (=> gắn thẻ?)
+- Giết người chơi
+- kiểm tra xem không có đội chiến thắng
+- Thêm/bớt phiếu bầu
+
+[Khách hàng] (Giao diện người dùng)
+Phòng khách/Chế độ phòng
+- Tên khách hàng (C-UD) (ListBox) (view)
+- Read = Getter = không cần (vì UI)
+- Thêm tin nhắn vào ChatBox
+- Cài đặt trò chơi (C-UD) (?)
+
+Chế độ tiệc tùng/trò chơi
+- Hẹn giờ
+- Vai trò người chơi
+- Thêm tin nhắn vào ChatBox
+- Tên người chơi (C-UD) (ListBox)
+- Giao diện Setup/Unsetup theo vai trò/giai đoạn
+- cupid= chỉ định 2 người chơi
+- thấu thị = chỉ định 1 người chơi
+- người sói= bầu chọn 1 người chơi
+- phù thủy= chọn hành động
+- không làm gì cả
+- liều thuốc của cuộc sống
+- thuốc chết
+- chỉ định 1 người chơi
+- phiếu thị trưởng = bầu 1 người chơi
+- phiếu bầu của làng = bầu chọn 1 người chơi
+- thợ săn= chỉ định 1 người chơi
+- thị trưởng= chỉ định 1 người chơi

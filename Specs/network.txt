@@ -1,0 +1,181 @@
+Thủ tục trước khi bắt đầu
+=============================
+
+=> “Giới thiệu”
+=> Máy chủ => Máy khách
+USER_NAME_SET (Tên tạm thời)
+=> Máy chủ => Máy khách
+ROOM_USER_LIST_CHANGED (danh sách)
+
+=> Phòng
+=> Máy khách => Máy chủ
+=> CHANGE_NAME (tên cũ, tên mới)
+=> Server => Client (tất cả) (nếu tên hợp lệ)
+=> USER_NAME_CHANGED (tên cũ, tên mới)
+
+=> Máy khách => Máy chủ
+=> CHAT_MESSAGE (tin nhắn)
+=> Máy chủ => Máy khách (tất cả)
+=> ROOM_MESSAGE_SENT (tên, tin nhắn)
+
+=> Máy khách kết nối với máy chủ
+=> Máy chủ => Máy khách (tất cả)
+=> ROOM_USER_JOINED (tên)
+
+=> Máy khách ngắt kết nối với máy chủ
+=> Máy chủ => Máy khách (tất cả)
+=> ROOM_USER_LEFT (tên)
+
+=> Máy chủ thay đổi cài đặt
+=> Máy khách (máy chủ) => Máy chủ
+=> CHANGE_GAME_SETTING (đặt giá trị mới)
+=> Máy chủ => Máy khách (tất cả)
+=> GAME_SETTING_CHANGED (cài đặt, giá trị mới)
+
+=> Host bấm vào “Bắt đầu trò chơi”
+=> Máy khách (máy chủ) => Máy chủ
+=> START_GAME()
+=> Máy chủ => Máy khách (tất cả)
+=> TRÒ CHƠI_STARTED()
+
+Tiến trình của trò chơi
+===========================
+
+=> Phân công vai trò
+=> Server => Client (từng cái một) vai trò của nó
+=> GAME_ROLE_ASSIGNED (vai trò)
+
+Chờ đợi? (10 giây)
+
+=> Bắt đầu vòng lặp chính
+=> Máy chủ => Máy khách (tất cả)
+=> GAME_PHASE_CHANGED (ĐÊM)
+
+nếu đêm đầu tiên
+=> Hành động của Cupid (+thời gian chờ)
+=> Máy chủ => Máy khách (tất cả)
+=> GAME_CUPID_AWOKEN
+
+=> Máy khách (cupid) => Máy chủ
+=> SET_CUPID_LOVERS (tên1, tên2)
+=> Máy chủ => Khách hàng (name1, name2)
+=> GAME_CUPID_LOVER_SET (tên khác)
+
+=> Máy chủ => Máy khách (tất cả)
+=> GAME_CUPID_ASLEEP
+
+thật sống động
+=> Hành động tâm linh (+ thời gian chờ đợi)
+=> Máy chủ => Máy khách (tất cả)
+=> GAME_SEER_AWOKEN
+
+=> Máy khách (nhẹ) => Máy chủ
+=> SET_SEER_TARGET (tên)
+=> Máy chủ => Máy khách (nhẹ)
+=> GAME_SEER_ROLE_REVEALED (tên, vai trò)
+
+=> Máy chủ => Máy khách (tất cả)
+=> GAME_SEER_ASLEEP
+
+=> Hành động của người sói (+ thời gian chờ)
+=> Máy chủ => Máy khách (tất cả)
+=> GAME_WEREWOLVES_AWOKEN
+
+=> Máy khách (mỗi LG) => Máy chủ
+=> ADD_VOTE (tên)
+=> Máy chủ => Máy khách (LG)
+=> GAME_VOTE_ADDED (nguồn, đích)
+
+=> Máy khách (mỗi LG) => Máy chủ
+=> REMOVE_VOTE (tên)
+=> Máy chủ => Máy khách (LG)
+=> GAME_VOTE_REMOVED (nguồn, đích)
+
+=> Máy chủ => Máy khách (tất cả)
+=> GAME_WEREWOLVES_ALSEEP
+
+Server TAG tên được bình chọn nhiều nhất
+=> Máy chủ => Máy khách (LG)
+=> GAME_WEREWOLVES_TARGET_SET (tên)
+
+nếu phù thủy còn sống
+=> Hành động phù thủy (+ thời gian chờ)
+=> Máy chủ => Máy khách (tất cả)
+=> GAME_WITCH_AWOKEN
+
+=> Máy chủ => Máy khách (phù thủy)
+=> GAME_WEREWOLF_TARGET_REVEALED (tên)
+=> Máy khách (phù thủy) => Máy chủ
+=> SET_WITCH_ACTION (hành động, tên)
+
+=> Máy chủ => Máy khách (tất cả)
+=> GAME_WITCH_ASLEEP
+
+Máy chủ TAG tên tùy theo hành động
+=> Máy chủ => Máy khách (phù thủy)
+=> GAME_WITCH_ACTION_SET (hành động, tên)
+
+=> Máy chủ "biên dịch" tất cả các thẻ và đó là gì
+Dành cả đêm để
+=> quản lý trường hợp người yêu
+
+=> Máy chủ => Máy khách (tất cả)
+=> GAME_PHASE_CHANGED (NGÀY)
+
+=> Máy chủ => Máy khách (tất cả)
+=> cho mỗi người chơi đã chết trong đêm
+=> GAME_PLAYER_DIED (tên, vai trò, thế nào?)
+
+nếu ngày đầu tiên
+=> Máy chủ => Máy khách (tất cả)
+=> GAME_MAAYOR_ELECTION_STARTED
+
+=> Máy khách (mỗi máy trực tiếp) => Máy chủ
+=> ADD_VOTE (tên)
+=> Máy chủ => Máy khách (tất cả)
+=> GAME_VOTE_ADDED (nguồn, đích)
+
+=> Máy khách (mỗi máy trực tiếp) => Máy chủ
+=> REMOVE_VOTE (tên)
+=> Máy chủ => Máy khách (tất cả)
+=> GAME_VOTE_REMOVED (nguồn, đích)
+
+=> Máy chủ => Máy khách (tất cả)
+=> GAME_MAYOR_ELECTION_ENDED
+
+Máy chủ sẽ thiết lập thị trưởng
+=> Máy chủ => Máy khách (tất cả)
+=> GAME_MAYOR_CHANGED (tên)
+
+=> Máy chủ => Máy khách (tất cả)
+=> GAME_DAY_VOTE_STARTED()
+
+=> Máy khách (mỗi máy trực tiếp) => Máy chủ
+=> ADD_VOTE (tên)
+=> Máy chủ => Máy khách (tất cả)
+=> GAME_VOTE_ADDED (nguồn, đích)
+
+=> Máy khách (mỗi máy trực tiếp) => Máy chủ
+=> REMOVE_VOTE (tên)
+=> Máy chủ => Máy khách (tất cả)
+=> GAME_VOTE_REMOVED (nguồn, đích)
+
+=> Máy chủ => Máy khách (tất cả)
+=> GAME_DAY_VOTE_ENDED()
+
+Máy chủ sẽ gắn thẻ người có nhiều phiếu bầu nhất
+=> Máy chủ => Máy khách (tất cả)
+=> GAME_PLAYER_DIED (tên, vai trò, cách thức=được bình chọnByVillage)
+
+[GAME_PLAYER_DIED]
+nếu thị trưởng chết
+=> Máy khách (thị trưởng) => Máy chủ
+=> SET_NEW_MAYOR (tên)
+=> Máy chủ => Máy khách (tất cả)
+=> GAME_MAYOR_CHANGED (tên)
+
+nếu thợ săn chết
+=> Máy khách (thợ săn) => Máy chủ
+=> SET_HUNTER_TARGET (tên)
+=> Máy chủ => Máy khách (tất cả)
+=> GAME_PLAYER_DIED (tên, vai trò, cách thức=killedByHunter)
