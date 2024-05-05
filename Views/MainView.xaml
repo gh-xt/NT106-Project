@@ -11,6 +11,9 @@
 
         <converters:BooleanToOpacityConverter x:Key="BoolToOpacity" />
     </UserControl.Resources>
+    <UserControl.Background>
+        <ImageBrush/>
+    </UserControl.Background>
 
     <StackPanel HorizontalAlignment="Center" VerticalAlignment="Center" Margin="16px">
         <Image Source="/Resources/Images/werewolf.png" Width="128px" Height="128px" Margin="0 0 0 8px" />

@@ -39,9 +39,9 @@ namespace Werewolf.Game
             Villager = new Role(4, "Dân làng", Team.Village, false,
                 "Bạn không có kỹ năng đặc biệt.");
             Werewolf = new Role(5, "Ma sói", Team.Werewolf, false,
-                "Trong đêm, bạn có thể trò chuyện với những người sói khác và bầu chọn một người. Người đó " +
+                "Trong đêm, bạn có thể trò chuyện với những người sói khác và bầu chọn một người. " +
                 "Ai có nhiều phiếu bầu nhất sẽ bị coi là mục tiêu và sẽ chết vào sáng hôm sau.");
-            Witch = new Role(6, "Phù tủy", Team.Village, true,
+            Witch = new Role(6, "Phù thủy", Team.Village, true,
                 "Trong đêm, bạn có thể lựa chọn giữa 3 hành động: sử dụng thuốc chữa bệnh; nó cho phép " +
                 "Để tránh mục tiêu của người sói bị giết, hãy dùng thuốc độc để giết người" +
                 "theo lựa chọn của bạn, hoặc không làm gì cả. Bạn chỉ có một lọ thuốc cho toàn bộ trò chơi.");

@@ -27,7 +27,7 @@ namespace Werewolf.Network
         }
         #endregion Singleton
 
-        public const int DEFAULT_PORT = 9998;
+        public const int DEFAULT_PORT = 8888;
 
         private readonly Socket _server;
         private readonly List<User> _users;
