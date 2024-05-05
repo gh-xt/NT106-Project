@@ -27,24 +27,33 @@ namespace Werewolf.Game
             allRoles = new Dictionary<int, Role>();
 
             Cupid = new Role(0, "Cupid", Team.Village, true,
-                "Đêm đầu tiên em sẽ chọn ra hai người. Hai người này sẽ yêu nhau, nghĩa là " +
-                "rằng nếu một người chết vào ban đêm hoặc ban ngày thì người còn lại sẽ tự tử vì đau buồn. Lỡ như" +
+                "Đêm đầu tiên bạn sẽ chọn ra hai người và ghép đôi với nhau, nghĩa là " +
+                "nếu một người chết vào ban đêm hoặc ban ngày thì người còn lại sẽ tự tử vì đau buồn. Nếu như " +
                 "đôi tình nhân cùng tồn tại đến cuối cùng thì sẽ chiến thắng.");
             Hunter = new Role(1, "Thợ săn", Team.Village, true,
-                "Khi bạn chết, bạn giết một người mà bạn chọn.");
+                "Khi bạn chết, bạn có thể giết một người.");
             LittleGirl = new Role(2, "Ti hí", Team.Village, true,
-                "Trong đêm, khi người sói thức giấc, bạn có thể thấy những tin nhắn họ gửi cho nhau.");
+                "Trong đêm, khi Ma sói thức giấc, bạn có thể thấy những tin nhắn họ gửi cho nhau.");
             Seer = new Role(3, "Tiên tri", Team.Village, true,
-                "Mỗi đêm bạn có thể khám phá vai trò của người chơi mà bạn lựa chọn.");
+                "Mỗi đêm bạn có thể khám phá vai trò của người chơi mà bạn chọn.");
             Villager = new Role(4, "Dân làng", Team.Village, false,
                 "Bạn không có kỹ năng đặc biệt.");
             Werewolf = new Role(5, "Ma sói", Team.Werewolf, false,
+<<<<<<< HEAD
                 "Trong đêm, bạn có thể trò chuyện với những người sói khác và bầu chọn một người. " +
                 "Ai có nhiều phiếu bầu nhất sẽ bị coi là mục tiêu và sẽ chết vào sáng hôm sau.");
             Witch = new Role(6, "Phù thủy", Team.Village, true,
                 "Trong đêm, bạn có thể lựa chọn giữa 3 hành động: sử dụng thuốc chữa bệnh; nó cho phép " +
                 "Để tránh mục tiêu của người sói bị giết, hãy dùng thuốc độc để giết người" +
                 "theo lựa chọn của bạn, hoặc không làm gì cả. Bạn chỉ có một lọ thuốc cho toàn bộ trò chơi.");
+=======
+                "Trong đêm, bạn có thể trò chuyện với những Ma sói khác và bầu chọn một người để giết. " +
+                "Ai là người có nhiều phiếu bầu nhất sẽ bị coi là mục tiêu và sẽ chết vào sáng hôm sau.");
+            Witch = new Role(6, "Phù thủy", Team.Village, true,
+                "Trong đêm, bạn có thể lựa chọn 1 trong 3 hành động: sử dụng thuốc chữa bệnh (cho phép " +
+                "người sói bị giết thoát chết), hoặc dùng thuốc độc để giết người mà bạn cho rằng đó là Ma sói, " +
+                "hoặc không làm gì cả. Bạn chỉ có thể sử dụng 1 lọ thuốc trong suốt cuộc chơi.");
+>>>>>>> 19f075e48d46219ae0b50105ea9d12d2768d37d8
         }
 
         public int Id { get; }

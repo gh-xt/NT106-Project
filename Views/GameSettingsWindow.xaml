@@ -23,8 +23,8 @@
             <RowDefinition Height="auto" />
         </Grid.RowDefinitions>
 
-        <TextBlock Grid.Column="0" Grid.Row="0" Text="Roles có sẵn :" Margin="0 0 0 8px" />
-        <TextBlock Grid.Column="2" Grid.Row="0" Text="Roles đã thêm :" Margin="0 0 0 8px" />
+        <TextBlock Grid.Column="0" Grid.Row="0" Text="Roles có sẵn:" Margin="0 0 0 8px" />
+        <TextBlock Grid.Column="2" Grid.Row="0" Text="Roles đã thêm:" Margin="0 0 0 8px" />
 
         <ListBox x:Name="AvailableRoleList" Grid.Column="0" Grid.Row="1" />
         <StackPanel Grid.Column="1" Grid.Row="1" VerticalAlignment="Center" Margin="8px 0">

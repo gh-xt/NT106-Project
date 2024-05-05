@@ -19,7 +19,7 @@
         </Grid.RowDefinitions>
 
         <StackPanel Grid.Column="0" Grid.Row="0" Orientation="Horizontal">
-            <TextBlock Text="Kết nối với phòng : " />
+            <TextBlock Text="Kết nối với phòng: " />
             <TextBlock x:Name="IPAddressText" Text="[address ip]" />
         </StackPanel>
         <Button x:Name="SettingsBtn" Grid.Column="1" Grid.Row="0" Click="SettingsBtn_Click" Margin="16px">

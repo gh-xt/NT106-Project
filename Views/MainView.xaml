@@ -40,7 +40,7 @@
                     <RowDefinition Height="auto" />
                 </Grid.RowDefinitions>
 
-                <TextBlock Grid.Column="0" Grid.Row="0" Text="Địa chỉ IP của phòng :" />
+                <TextBlock Grid.Column="0" Grid.Row="0" Text="Địa chỉ IP của phòng:" />
                 <TextBox x:Name="RoomIPAddress" Grid.Column="1" Grid.Row="0" Width="128px" />
                 <Button x:Name="RoomConnectBtn" Grid.Column="1" Grid.Row="1" Click="RoomConnectBtn_Click" IsDefault="True" Margin="0 8px 0 0">
                     <StackPanel Orientation="Horizontal">

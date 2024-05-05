@@ -47,13 +47,13 @@ namespace Werewolf.Views
             Client.Instance.ServerEvents.AddListener<UserJoinedEventArgs>((sender, e) =>
             {
                 AddUser(e.Name);
-                AddChatMessage(string.Empty, e.Name + " vừa vào phòng.");
+                AddChatMessage(string.Empty, e.Name + " vừa vào phòng!");
             });
 
             Client.Instance.ServerEvents.AddListener<UserLeftEventArgs>((sender, e) =>
             {
                 RemoveUser(e.Name);
-                AddChatMessage(string.Empty, e.Name + " bị ngắt kết nối khỏi phòng.");
+                AddChatMessage(string.Empty, e.Name + " bị ngắt kết nối!");
             });
 
             Client.Instance.ServerEvents.AddListener<GameStartedEventArgs>((sender, e) =>
@@ -113,7 +113,7 @@ namespace Werewolf.Views
 
             for (int i = 5; i >= 1; --i)
             {
-                Server.Instance.SendEvent(new ChatMessageSentEventArgs(string.Empty, $"Bắt đầu trò chơi trong {i}..."));
+                Server.Instance.SendEvent(new ChatMessageSentEventArgs(string.Empty, $"Trò chơi bắt đầu trong trong {i} giây..."));
                 await Task.Delay(1000);
             }
 

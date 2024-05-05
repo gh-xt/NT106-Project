@@ -56,7 +56,7 @@ namespace Werewolf.Views
                     if (role.DefaultTeam == Team.Village)
                         team.Text = "dân làng";
                     else if (role.DefaultTeam == Team.Werewolf)
-                        team.Text = "ma sói";
+                        team.Text = "Ma sói";
                     team.Text += ".";
                     team.Foreground = new SolidColorBrush(role.DefaultTeam.Color);
 
