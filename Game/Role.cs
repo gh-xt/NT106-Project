@@ -44,7 +44,7 @@ namespace Werewolf.Game
             Witch = new Role(6, "Phù thủy", Team.Village, true,
                 "Trong đêm, bạn có thể lựa chọn 1 trong 3 hành động: sử dụng thuốc chữa bệnh (cho phép " +
                 "người sói bị giết thoát chết), hoặc dùng thuốc độc để giết người mà bạn cho rằng đó là Ma sói, " +
-                "hoặc không làm gì cả. Bạn chỉ có một lọ thuốc trong suốt cuộc chơi.");
+                "hoặc không làm gì cả. Bạn chỉ có thể sử dụng 1 lọ thuốc trong suốt cuộc chơi.");
         }
 
         public int Id { get; }

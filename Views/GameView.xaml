@@ -6,6 +6,9 @@
              xmlns:local="clr-namespace:Werewolf.Views"
              mc:Ignorable="d" d:DesignWidth="720"  d:DesignHeight="540">
     <Grid Margin="16px 0 16px 16px">
+        <Grid.Background>
+            <ImageBrush/>
+        </Grid.Background>
         <Grid.ColumnDefinitions>
             <ColumnDefinition Width="auto" MinWidth="128px" />
             <ColumnDefinition Width="*" />
@@ -18,7 +21,7 @@
             <RowDefinition Height="auto" />
         </Grid.RowDefinitions>
 
-        <ListBox x:Name="RoleList" Grid.Column="0" Grid.Row="0" Grid.RowSpan="2" Margin="0 0 16px 16px" />
+        <ListBox x:Name="RoleList" Grid.Column="0" Grid.Row="0" Grid.RowSpan="2" Margin="0 0 16px 16px" Background="White" />
 
         <Grid Grid.Column="1" Grid.Row="0" Margin="0 0 16px 16px">
             <Grid.ColumnDefinitions>
@@ -27,7 +30,11 @@
                 <ColumnDefinition Width="*" />
             </Grid.ColumnDefinitions>
 
-            <TextBlock Grid.Column="0" Text="Role của bạn là " />
+            <TextBlock Grid.Column="0" Text="Vai trò của bạn là " >
+                <TextBlock.Background>
+                    <ImageBrush Stretch="Uniform"/>
+                </TextBlock.Background>
+            </TextBlock>
             <TextBlock x:Name="RoleText" Grid.Column="1" FontWeight="Bold" />
 
             <TextBlock x:Name="TimerText" Grid.Column="2" FontSize="24px" FontWeight="Bold" HorizontalAlignment="Right" />
@@ -38,7 +45,7 @@
                      IsReadOnly="True"
                      ScrollBar.Scroll="ChatBox_Scroll"
                      VerticalAlignment="Stretch"
-                     VerticalScrollBarVisibility="Visible" TextChanged="ChatBox_TextChanged">
+                     VerticalScrollBarVisibility="Visible" TextChanged="ChatBox_TextChanged" Background="White">
             <RichTextBox.Resources>
                 <Style TargetType="{x:Type Paragraph}">
                     <Setter Property="FontSize" Value="14px" />

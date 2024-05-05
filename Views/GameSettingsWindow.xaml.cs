@@ -31,22 +31,22 @@ namespace Werewolf.Views
                 catch (NotEnoughWerewolfException)
                 {
                     e.Cancel = true;
-                    MessageBox.Show("Phải có ít nhất một người sói.", "Lỗi", MessageBoxButton.OK, MessageBoxImage.Error);
+                    MessageBox.Show("Phải có ít nhất 1 Ma sói!", "Lỗi", MessageBoxButton.OK, MessageBoxImage.Error);
                 }
                 catch (TooMuchWerewolfException)
                 {
                     e.Cancel = true;
-                    MessageBox.Show("Chắc chắn phải có nhiều dân làng hơn người sói.", "Lỗi", MessageBoxButton.OK, MessageBoxImage.Error);
+                    MessageBox.Show("Chắc chắn phải có nhiều dân làng hơn Ma sói!", "Lỗi", MessageBoxButton.OK, MessageBoxImage.Error);
                 }
                 catch (NotEnoughRolesException)
                 {
                     e.Cancel = true;
-                    MessageBox.Show("Không có đủ vai trò cho tất cả người chơi.", "Lỗi", MessageBoxButton.OK, MessageBoxImage.Error);
+                    MessageBox.Show("Không có đủ vai trò cho tất cả người chơi!", "Lỗi", MessageBoxButton.OK, MessageBoxImage.Error);
                 }
                 catch (TooMuchRolesException)
                 {
                     e.Cancel = true;
-                    MessageBox.Show("Có quá nhiều vai trò.", "Lỗi", MessageBoxButton.OK, MessageBoxImage.Error);
+                    MessageBox.Show("Có quá nhiều vai trò!", "Lỗi", MessageBoxButton.OK, MessageBoxImage.Error);
                 }
             };
 

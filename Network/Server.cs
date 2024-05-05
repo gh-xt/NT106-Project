@@ -27,7 +27,7 @@ namespace Werewolf.Network
         }
         #endregion Singleton
 
-        public const int DEFAULT_PORT = 9998;
+        public const int DEFAULT_PORT = 8888;
 
         private readonly Socket _server;
         private readonly List<User> _users;
@@ -53,7 +53,7 @@ namespace Werewolf.Network
                 SendEvent(new UserJoinedEventArgs(e.User.Name));
                 _users.Add(e.User);
                 ListenUserEvents(e.User);
-                e.User.SendEvent(new ChatMessageSentEventArgs(string.Empty, $"Chào mừng đến trò chơi, {e.User.Name} !"));
+                e.User.SendEvent(new ChatMessageSentEventArgs(string.Empty, $"Chào mừng đến trò chơi, {e.User.Name}!"));
                 e.User.SendEvent(new UserListSetEventArgs(_users.Select((u) => u.Name).ToArray()));
                 Game.Game.Instance.AddPlayer(e.User);
             });

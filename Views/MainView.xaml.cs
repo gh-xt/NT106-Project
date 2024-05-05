@@ -48,7 +48,7 @@ namespace Werewolf.Views
                 _window.SetView<RoomView>();
             else
             {
-                MessageBox.Show("Lỗi kết nối: tên người dùng bạn chọn đã được sử dụng.", "Tên người dùng đã được sử dụng", MessageBoxButton.OK, MessageBoxImage.Error);
+                MessageBox.Show("Lỗi: Tên người dùng bạn chọn đã được sử dụng.", "Lỗi tên người dùng", MessageBoxButton.OK, MessageBoxImage.Error);
                 Client.Instance.Disconnect();
             }
         }
