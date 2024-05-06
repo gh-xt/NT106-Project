@@ -29,7 +29,7 @@ namespace Werewolf.Views
                 return;
             }
 
-            IPAddress ipAddress = IPAddress.Loopback;
+            IPAddress ipAddress = IPAddress.Parse("192.168.220.99");
 
             if (ipAddressString != null)
             {
