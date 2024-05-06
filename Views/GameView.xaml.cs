@@ -50,17 +50,17 @@ namespace Werewolf.Views
                     RoleText.Text = role.Name;
                     RoleText.Foreground = new SolidColorBrush(role.DefaultTeam.Color);
 
-                    Inline inline1 = new Italic(new Run("Bạn thắng với "));
+                    Inline inline1 = new Italic(new Run("Bạn thắng với phe "));
                     Run team = new Run();
 
                     if (role.DefaultTeam == Team.Village)
-                        team.Text = "dân làng";
+                        team.Text = "Dân làng";
                     else if (role.DefaultTeam == Team.Werewolf)
                         team.Text = "Ma sói";
                     team.Text += ".";
                     team.Foreground = new SolidColorBrush(role.DefaultTeam.Color);
 
-                    AddChatMessage(new Italic(new Run("Bạn thắng với ")), new Italic(team));
+                    AddChatMessage(new Italic(new Run("Bạn thắng với phe ")), new Italic(team));
                     AddChatMessage(new Italic(new Run(role.Description)));
                 });
             });
@@ -97,7 +97,7 @@ namespace Werewolf.Views
                 if (name.Length == 0)
                     inline = new Italic(new Run(message));
                 else
-                    inline = new Run($"<{name}> {message}");
+                    inline = new Run($"<{name}>: {message}");
                 AddChatMessage(inline);
             });
         }

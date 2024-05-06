@@ -71,7 +71,7 @@ namespace Werewolf.Views
 
         private void AddChatMessage(string name, string message)
         {
-            string nameIfPresent = name.Length == 0 ? name : $"<{name}> ";
+            string nameIfPresent = name.Length == 0 ? name : $"<{name}>: ";
 
             Dispatcher.Invoke(() =>
             {

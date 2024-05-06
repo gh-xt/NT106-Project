@@ -36,7 +36,7 @@ namespace Werewolf.Views
                 catch (TooMuchWerewolfException)
                 {
                     e.Cancel = true;
-                    MessageBox.Show("Chắc chắn phải có nhiều dân làng hơn Ma sói!", "Lỗi", MessageBoxButton.OK, MessageBoxImage.Error);
+                    MessageBox.Show("Chắc chắn phải có nhiều Dân làng hơn Ma sói!", "Lỗi", MessageBoxButton.OK, MessageBoxImage.Error);
                 }
                 catch (NotEnoughRolesException)
                 {
