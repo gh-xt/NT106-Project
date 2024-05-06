@@ -65,13 +65,29 @@ namespace Werewolf.Network
                 Game.Game.Instance.RemovePlayer(e.User);
             });
         }
-
+        private string GetIPAddress()
+        {
+            string IPAddress = string.Empty;
+            IPHostEntry Host = default(IPHostEntry);
+            string Hostname = null;
+            Hostname = System.Environment.MachineName;
+            Host = Dns.GetHostEntry(Hostname);
+            foreach (IPAddress IP in Host.AddressList)
+            {
+                if (IP.AddressFamily == System.Net.Sockets.AddressFamily.InterNetwork)
+                {
+                    IPAddress = Convert.ToString(IP);
+                }
+            }
+            return IPAddress;
+        }
         public void Start(int port = DEFAULT_PORT)
         {
+            string ip = GetIPAddress();
             if (_server.Connected) return;
             Started = true;
 
-            _server.Bind(new IPEndPoint(IPAddress.Parse("192.168.220.99"), port));
+            _server.Bind(new IPEndPoint(IPAddress.Parse(ip), port));
             _server.Listen(10);
             ListenConnexions();
         }

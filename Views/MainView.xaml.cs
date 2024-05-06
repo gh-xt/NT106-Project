@@ -1,4 +1,5 @@
-﻿using System.Net;
+﻿using System;
+using System.Net;
 using System.Windows;
 using System.Windows.Controls;
 
@@ -18,10 +19,27 @@ namespace Werewolf.Views
             InitializeComponent();
             _window = window;
         }
+        private string GetIPAddress()
+        {
+            string IPAddress = string.Empty;
+            IPHostEntry Host = default(IPHostEntry);
+            string Hostname = null;
+            Hostname = System.Environment.MachineName;
+            Host = Dns.GetHostEntry(Hostname);
+            foreach (IPAddress IP in Host.AddressList)
+            {
+                if (IP.AddressFamily == System.Net.Sockets.AddressFamily.InterNetwork)
+                {
+                    IPAddress = Convert.ToString(IP);
+                }
+            }
+            return IPAddress;
+        }
 
         private void ConnectClient(string ipAddressString = null)
         {
             UserName.Text = UserName.Text.Trim();
+            string ip = GetIPAddress();
 
             if (UserName.Text.Length < 3)
             {
@@ -29,7 +47,7 @@ namespace Werewolf.Views
                 return;
             }
 
-            IPAddress ipAddress = IPAddress.Parse("192.168.220.99");
+            IPAddress ipAddress = IPAddress.Parse(ip);
 
             if (ipAddressString != null)
             {
