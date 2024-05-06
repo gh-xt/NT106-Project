@@ -1,79 +1,76 @@
-Người sói (mã giả)
-===========================
+Người Sói (mã giả)
 
 (phần mạng)
 
-NGƯỜI CHƠI = máy khách được kết nối với máy chủ
+NGƯỜI CHƠI = các khách hàng kết nối vào máy chủ
 ĐỘI = dân làng, người sói
-ROLES = người quản lý trò chơi (người dẫn chương trình) chọn các vai trò sẽ có trong trò chơi
+VAI TRÒ = người chơi chủ (chủ trò chơi) chọn các vai trò sẽ có trong trò chơi
 
-Gán Roles(người chơi) - phân công vai trò ngẫu nhiên
-X để trở thành một cầu thủ, một vai trò
+GánVaiTrò(joueurs) - gán vai trò ngẫu nhiên
+X gán vai trò cho một người chơi
 
-
-TRONG KHI (không có ĐỘI nào thắng)
+MIỄN LÀ (chưa có ĐỘI nào chiến thắng)
 Giai đoạn = Đêm
-X gửi tin nhắn cho người chơi "Đêm rồi blah blah"
+X gửi tin nhắn cho người chơi "Đêm đến rồi blablabla"
+	X Phụ giai đoạn = Thần tình yêu (nếu là đêm đầu tiên)
+		- ThứcCupidon() - thực hiện hành động của thần tình yêu
+			X bắt đầu bộ đếm thời gian X giây
+				X chọn 2 người chơi (có thể tự chọn)
+				X gửi tin nhắn cho hai người chơi: "Bạn yêu <người chơi>, vai trò của anh ấy là <vai trò>"
+			NẾU bộ đếm thời gian kết thúc
+				- bỏ qua lượt này
 
-Giai đoạn phụ X = Cupid (nếu là đêm đầu tiên)
-- WakeCupid() - thực hiện hành động thần tình yêu
-X bắt đầu hẹn giờ X giây
-X chỉ định 2 người chơi (anh ta có thể tự chỉ định)
-X gửi tin nhắn cho cả hai người chơi: "Bạn đang yêu <player>, anh ấy là <role>"
-NẾU hết giờ
-- bỏ qua lượt
+	X Phụ giai đoạn = Tiên tri (nếu tiên tri còn sống)
+		- ThứcTiênTri() - thực hiện hành động của tiên tri
+			X bắt đầu bộ đếm thời gian X giây
+				X chọn 1 người chơi
+				X gửi tin nhắn cho tiên tri: "Vai trò của <người chơi> là <vai trò>".
+			NẾU bộ đếm thời gian kết thúc
+				- bỏ qua lượt này
 
-Giai đoạn phụ X = Người thấu thị (nếu còn sống)
-- Wake up Clairvoyant() - thực hiện hành động thấu thị
-X bắt đầu hẹn giờ X giây
-X chỉ định 1 người chơi
-X gửi tin nhắn cho người thấu thị: "Vai trò của <player> là <role>".
-NẾU hết giờ
-- bỏ qua lượt
-Giai đoạn phụ X = Người sói
-- WakeWerewolf() - thực hiện hành động của người sói
-X bắt đầu hẹn giờ X giây
-- kích hoạt trò chuyện người sói (+ cháu gái)
-X phiếu bầu cho 1 người chơi
-NẾU hết giờ
-X gắn thẻ người chơi có nhiều phiếu bầu nhất, là nạn nhân của người sói
-IF bình đẳng = ngẫu nhiên (trừ người sói)
-Giai đoạn phụ X = Phù thủy (nếu còn sống)
-- WakeWitch() - thực hiện hành động của phù thủy
-X bắt đầu hẹn giờ X giây
-X gửi tin nhắn cho mụ phù thủy: "Người chơi <player> là nạn nhân"
-- đã chọn, sau đó dừng hẹn giờ nếu được chọn:
-- không làm gì cả
-- sử dụng (hoặc không) thuốc chữa bệnh cho nạn nhân
-- sử dụng (hoặc không) thuốc độc cho người chơi mà họ lựa chọn
-Gắn thẻ X người chơi được chỉ định là nạn nhân của mụ phù thủy
-NẾU hết giờ
-- chọn "không làm gì cả"
+	X Phụ giai đoạn = Người Sói
+		- ThứcNgườiSói() - thực hiện hành động của người sói
+			X bắt đầu bộ đếm thời gian X giây
+				- kích hoạt trò chuyện riêng của người sói (+ cô bé sói)
+				X bỏ phiếu cho 1 người chơi
+			NẾU bộ đếm thời gian kết thúc
+				X đánh dấu người chơi có nhiều phiếu nhất làm nạn nhân của người sói
+				NẾU hòa = ngẫu nhiên (trừ người sói)
+	X Phụ giai đoạn = Phù thủy (nếu phù thủy còn sống)
+		- ThứcPhùThủy() - thực hiện hành động của phù thủy
+			X bắt đầu bộ đếm thời gian X giây
+				X gửi tin nhắn cho phù thủy: "Người chơi <người chơi> là nạn nhân"
+				- chọn, sau đó dừng bộ đếm thời gian nếu đã chọn:
+					- không làm gì
+					- sử dụng (hoặc không) thang thuốc chữa bệnh trên nạn nhân
+					- sử dụng (hoặc không) thang thuốc độc trên một người chơi theo lựa chọn của mình
+						X đánh dấu người chơi đã chọn là nạn nhân của phù thủy
+			NẾU bộ đếm thời gian kết thúc
+				- chọn "không làm gì"
 
 Giai đoạn = Ngày
-X gửi tin nhắn tới người chơi "Hôm nay là ngày blah blah"
-X Turn (giết) người chơi mục tiêu/Nạn nhân được gắn thẻ (người sói/phù thủy)
-- kích hoạt sự kiện [người chơi chết]
-IF thị trưởng = DoMayorAction()
-X biểu thị một người chơi
-X khiến người chơi trở thành Thị trưởng
-IF thợ săn = DoHunterAction()
-X biểu thị một người chơi
-X làm cho người chơi này chết
-X gửi tin nhắn cho người chơi: người chơi đã chết + vai trò của họ
-X Tiểu giai đoạn = Cuộc bầu cử của Thị trưởng (nếu là ngày đầu tiên)
-X bắt đầu hẹn giờ X giây
-X mỗi người chơi bầu chọn cho người chơi khác
-NẾU hết thời gian, người chơi có nhiều phiếu bầu nhất là Thị trưởng
-NẾU bình đẳng
--ngẫu nhiên
-X Tiểu giai đoạn = Bình chọn
-X bắt đầu hẹn giờ X giây
-X mỗi người chơi bầu chọn cho người chơi khác
-NẾU hết thời gian, người chơi có nhiều phiếu bầu nhất sẽ bị giết/bị hành hình/treo cổ
-NẾU bình đẳng
-- Phiếu bầu của thị trưởng
-NẾU Thị trưởng không được bầu
--ngẫu nhiên
-X khiến (giết) người chơi chết
-KẾT THÚC TRONG KHI
+	X gửi tin nhắn cho người chơi "Đến ngày rồi blablabla"
+	X giết (tiêu diệt) những người chơi đã bị chọn/tag là nạn nhân (người sói/phù thủy)
+		- kích hoạt sự kiện [người chơi đã chết]
+			NẾU thị trưởng = ThựcHiệnHànhĐộngThịTrưởng()
+				X chọn một người chơi
+				X gán vai trò cho người chơi, Thị trưởng
+			NẾU thợ săn = ThựcHiệnHànhĐộngThợSăn()
+				X chọn một người chơi
+				X giết người chơi đó
+		X gửi tin nhắn cho người chơi: những người chơi đã chết + vai trò của họ
+	X Phụ giai đoạn = Bỏ phiếu Thị trưởng (nếu là ngày đầu tiên)
+		X bắt đầu bộ đếm thời gian X giây
+			X mỗi người chơi bỏ phiếu cho một người chơi khác
+		NẾU bộ đếm thời gian kết thúc, người chơi có nhiều phiếu nhất sẽ là Thị trưởng
+			NẾU hòa
+				- ngẫu nhiên
+	X Phụ giai đoạn = Bỏ phiếu
+		X bắt đầu bộ đếm thời gian X giây
+			X mỗi người chơi bỏ phiếu cho một người chơi khác
+		NẾU bộ đếm thời gian kết thúc, người chơi có nhiều phiếu nhất sẽ bị giết/ly nữa/lên cổ
+			NẾU hòa
+				- bỏ phiếu của Thị trưởng
+				NẾU Thị trưởng không bỏ phiếu
+					- ngẫu nhiên
+		X giết (tiêu diệt) người chơi
