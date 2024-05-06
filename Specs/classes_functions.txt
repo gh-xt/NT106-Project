@@ -1,34 +1,36 @@
-Đặc trưng:
-- Gửi tin nhắn cho người chơi (tin nhắn, người chơi)
-- Chỉ định một người chơi (người chơi, người chơi)
-- Bình chọn cho một người chơi (người chơi, người chơi)
-- Khiến một người chơi chết/giết (nguồn, người chơi)
-nguồn = Người sói, Phù thủy, Thợ săn, Phiếu bầu, Người yêu
-- Trở thành/Gán vai trò cho người chơi (vai trò, người chơi)
-- Tag một người chơi (tag, người chơi)
-- Bắt đầu hẹn giờ (giây)
-- Đặt pha (Ngày/Đêm)
-- Xác định giai đoạn phụ (Role cụ thể, Vote)
+Các tính năng:
 
-Các classes:
-- Người chơi
-// tĩnh (hàm lớp)
-- Nhận tất cả người chơi: Player.GetAll()
-- Nhận tất cả người chơi (w/tag)Player.GetAllWithTag(Tag tag)
-- Nhận tất cả người chơi (w/rol)Player.GetAllWithRole(Vai trò)
+Gửi tin nhắn cho một người chơi (tin nhắn, người chơi)
+Chọn một người chơi (người chọn, người bị chọn)
+Bỏ phiếu cho một người chơi (người bỏ phiếu, người được bỏ phiếu)
+Giết một người chơi (nguồn, người chơi)
+nguồn = Sói-giả, Phù-thủy, Thợ-săn, Phiếu bầu, Tình nhân
+Gán vai trò cho một người chơi (vai trò, người chơi)
+Đánh dấu một người chơi (dấu, người chơi)
+Khởi động một bộ đếm thời gian (giây)
+Định nghĩa giai đoạn (Ngày/Đêm)
+Định nghĩa phụ giai đoạn (Theo vai trò, Bỏ phiếu)
 
-// (hàm thực thể = phương thức)
-- Gửi tin nhắn: player.SendChatMessage(string tin nhắn)
-- Chỉ định một người chơi: player.Designate(Mục tiêu người chơi)
-- Bình chọn cho một người chơi: player.Vote(Mục tiêu người chơi)
-- Giết một người chơi: player.Kill(nguồn KillSource)
-- Gán vai trò: player.SetRole(Role role)
-- Gắn thẻ người chơi: player.Tag(Thẻ thẻ)
-- Lấy các thẻ: player.GetTags()
-- Kiểm tra xem người chơi có được gắn thẻ hay không: player.HasTag(Tag tag)?
-- Bộ đếm (Timer)
-- Bắt đầu hẹn giờ: time.Start(int giây)
-- Dừng bộ đếm thời gian: time.Stop()
-- Trò chơi
-- Đặt giai đoạn hiện tại: game.SetCurrentPhase(Giai đoạn giai đoạn)
-- Đặt pha con hiện tại: game.SetCurrentSubPhase(SubPhase Phase)
+Các lớp:
+Người chơi (Players)
+
+//tĩnh (các hàm lớp)
+Lấy tất cả người chơi: Player.GetAll()
+Lấy tất cả người chơi (có dấu): Player.GetAllWithTag(Tag tag)
+Lấy tất cả người chơi (có vai trò): Player.GetAllWithRole(Role role)
+
+// thể hiện (các phương thức thể hiện)
+Gửi tin nhắn: player.SendChatMessage(string message)
+Chọn người chơi: player.Designate(Player target)
+Bỏ phiếu cho người chơi: player.Vote(Player target)
+Giết người chơi: player.Kill(KillSource source)
+Gán vai trò: player.SetRole(Role role)
+Đánh dấu người chơi: player.Tag(Tag tag)
+Lấy các dấu: player.GetTags()
+Kiểm tra xem người chơi có bị đánh dấu không: player.HasTag(Tag tag)?
+Bộ đếm (Timer)
+Khởi động bộ đếm: timer.Start(int seconds)
+Dừng bộ đếm: timer.Stop()
+Trò chơi (Game)
+Định nghĩa giai đoạn hiện tại: game.SetCurrentPhase(Phase phase)
+Định nghĩa phụ giai đoạn hiện tại: game.SetCurrentSubPhase(SubPhase phase)
