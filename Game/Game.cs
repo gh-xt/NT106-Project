@@ -69,10 +69,10 @@ namespace Werewolf.Game
             int rolesCount = _roles.Count;
             int playersCount = _players.Count;
 
-            //if (werewolvesCount < 1) throw new NotEnoughWerewolfException();
-            //if (werewolvesCount >= villagersCount) throw new TooMuchWerewolfException();
-            //if (rolesCount < playersCount) throw new NotEnoughRolesException();
-            //if (rolesCount > playersCount) throw new TooMuchRolesException();
+            if (werewolvesCount < 1) throw new NotEnoughWerewolfException();
+            if (werewolvesCount >= villagersCount) throw new TooMuchWerewolfException();
+            if (rolesCount < playersCount) throw new NotEnoughRolesException();
+            if (rolesCount > playersCount) throw new TooMuchRolesException();
         }
 
         public void AssignRolesRandomly()

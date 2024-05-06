@@ -71,7 +71,7 @@ namespace Werewolf.Network
             if (_server.Connected) return;
             Started = true;
 
-            _server.Bind(new IPEndPoint(IPAddress.Loopback, port));
+            _server.Bind(new IPEndPoint(IPAddress.Parse("192.168.220.99"), port));
             _server.Listen(10);
             ListenConnexions();
         }
