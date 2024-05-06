@@ -7,7 +7,7 @@ NGƯỜI CHƠI = máy khách được kết nối với máy chủ
 ĐỘI = dân làng, người sói
 ROLES = người quản lý trò chơi (người dẫn chương trình) chọn các vai trò sẽ có trong trò chơi
 
-GánRoles(người chơi) - phân công vai trò ngẫu nhiên
+Gán Roles(người chơi) - phân công vai trò ngẫu nhiên
 X để trở thành một cầu thủ, một vai trò
 
 

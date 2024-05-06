@@ -32,7 +32,7 @@ Phòng khách/Chế độ phòng
 - Thêm tin nhắn vào ChatBox
 - Cài đặt trò chơi (C-UD) (?)
 
-Chế độ tiệc tùng/trò chơi
+Chế độ nhóm/trò chơi
 - Hẹn giờ
 - Vai trò người chơi
 - Thêm tin nhắn vào ChatBox
