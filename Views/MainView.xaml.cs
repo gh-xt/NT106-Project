@@ -43,7 +43,7 @@ namespace Werewolf.Views
 
             if (UserName.Text.Length < 3)
             {
-                MessageBox.Show("Tên của bạn phải chứa ít nhất 3 chữ cái.", "Lỗi - Tên không hợp lệ", MessageBoxButton.OK, MessageBoxImage.Error);
+                MessageBox.Show("Tên của bạn phải chứa ít nhất 3 chữ cái!", "Lỗi - Tên không hợp lệ", MessageBoxButton.OK, MessageBoxImage.Error);
                 return;
             }
 
@@ -55,7 +55,7 @@ namespace Werewolf.Views
 
                 if (!isValid)
                 {
-                    MessageBox.Show("Lỗi: Địa chỉ IP không hợp lệ.", "Lỗi - Địa chỉ IP không hợp lệ", MessageBoxButton.OK, MessageBoxImage.Error);
+                    MessageBox.Show("Địa chỉ IP không hợp lệ!", "Lỗi - Địa chỉ IP không hợp lệ", MessageBoxButton.OK, MessageBoxImage.Error);
                     return;
                 }
             }
@@ -66,7 +66,7 @@ namespace Werewolf.Views
                 _window.SetView<RoomView>();
             else
             {
-                MessageBox.Show("Lỗi: Tên người dùng bạn chọn đã được sử dụng.", "Lỗi tên người dùng", MessageBoxButton.OK, MessageBoxImage.Error);
+                MessageBox.Show("Tên người dùng bạn chọn đã được sử dụng!", "Lỗi - Tên người dùng đã sử dụng", MessageBoxButton.OK, MessageBoxImage.Error);
                 Client.Instance.Disconnect();
             }
         }
