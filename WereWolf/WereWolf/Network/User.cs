@@ -9,24 +9,24 @@ namespace Werewolf.Network
 {
     public class User : IEquatable<User>
     {
-        private readonly Socket _client;
-        private readonly PacketManager _packets;
+        private readonly Socket Socket_Client;
+        private readonly PacketManager PManager_Packets;
 
         public string Name { get; set; }
         public bool IsHost { get; }
 
         public User(Socket client, User[] users)
         {
-            _client = client;
-            _packets = new PacketManager(new NetworkStream(_client));
+            Socket_Client = client;
+            PManager_Packets = new PacketManager(new NetworkStream(Socket_Client));
 
-            Packet<string> packetName = _packets.Expect<Packet<string>>();
+            Packet<string> packetName = PManager_Packets.Expect<Packet<string>>();
 
             Name = packetName.Data1;
             IsHost = users.Length == 0;
             bool isNameTaken = users.Any((user) => Equals(user));
 
-            _packets.Send(new Packet<bool>(isNameTaken));
+            PManager_Packets.Send(new Packet<bool>(isNameTaken));
 
             if (isNameTaken)
                 throw new NameAlreadyTakenException(Name);
@@ -34,18 +34,18 @@ namespace Werewolf.Network
 
         public void SendEvent<TEventArgs>(TEventArgs args) where TEventArgs : EventArgs
         {
-            _packets.Send(new PacketEvent(args));
+            PManager_Packets.Send(new PacketEvent(args));
         }
 
         public dynamic ExpectEvent()
         {
-            return _packets.Expect<PacketEvent>().EventArgs;
+            return PManager_Packets.Expect<PacketEvent>().EventArgs;
         }
 
         public void Disconnect()
         {
-            _packets.Close();
-            _client.Disconnect(false);
+            PManager_Packets.Close();
+            Socket_Client.Disconnect(false);
         }
 
         public bool Equals(User other) => Name.Equals(other.Name);

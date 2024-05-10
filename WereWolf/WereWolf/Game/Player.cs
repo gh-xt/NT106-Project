@@ -8,28 +8,28 @@ namespace Werewolf.Game
     public class Player : IEquatable<Player>
     {
         public User User { get; }
-        private Role _role;
-        private Tag _tag;
-        private Team _overrideTeam;
+        private Role pri_Role;
+        private Tag pri_Tag;
+        private Team override_Team;
 
         public string Name => User.Name;
         public Role Role
         {
-            get => _role;
-            set => _role = value;
+            get => pri_Role;
+            set => pri_Role = value;
         }
-        public Team Team => _overrideTeam ?? _role.DefaultTeam;
+        public Team Team => override_Team ?? pri_Role.DefaultTeam;
 
         public Player(User user)
         {
             User = user;
-            _role = null;
-            _tag = Werewolf.Game.Tag.NONE;
-            _overrideTeam = null;
+            pri_Role = null;
+            pri_Tag = Werewolf.Game.Tag.NONE;
+            override_Team = null;
         }
 
-        public void RemoveTag(Tag tag) => _tag ^= tag;
-        public bool IsTagged(Tag tag) => _tag.HasFlag(tag);
+        public void RemoveTag(Tag tag) => pri_Tag ^= tag;
+        public bool IsTagged(Tag tag) => pri_Tag.HasFlag(tag);
 
         public bool Equals(Player other) => Name.Equals(other.Name);
     }

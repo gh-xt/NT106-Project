@@ -17,7 +17,6 @@ namespace Werewolf.Game
 
         public static Team Village;
         public static Team Werewolf;
-        public static Team Lover;
 
         static Team()
         {
