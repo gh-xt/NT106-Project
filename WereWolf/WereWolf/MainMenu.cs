@@ -53,6 +53,7 @@ namespace WereWolf
         {
             if (radioButton1.Checked)
             {
+               
                 panel1.Enabled = true;
                 panel2.Enabled = false; // Vô hiệu hóa panel2 nếu radioButton1 được chọn
             }
@@ -68,6 +69,7 @@ namespace WereWolf
         {
             if (radioButton2.Checked)
             {
+                
                 panel2.Enabled = true;
                 panel1.Enabled = false; // Vô hiệu hóa panel1 nếu radioButton2 được chọn
             }
