@@ -100,7 +100,6 @@
             this.radioButton1.TabStop = true;
             this.radioButton1.Text = "Tham gia phòng";
             this.radioButton1.UseVisualStyleBackColor = false;
-            this.radioButton1.CheckedChanged += new System.EventHandler(this.radioButton1_CheckedChanged);
             // 
             // label4
             // 
@@ -156,7 +155,6 @@
             this.radioButton2.TabStop = true;
             this.radioButton2.Text = "Tạo phòng";
             this.radioButton2.UseVisualStyleBackColor = false;
-            this.radioButton2.CheckedChanged += new System.EventHandler(this.radioButton2_CheckedChanged);
             // 
             // button2
             // 

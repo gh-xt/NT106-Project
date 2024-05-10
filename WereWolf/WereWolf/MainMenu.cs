@@ -18,6 +18,7 @@ namespace WereWolf
             InitializeForm(); // Khởi tạo form khi hiển thị lên
         }
 
+
         private void InitializeForm()
         {
             textBox1.Focus();
@@ -25,10 +26,6 @@ namespace WereWolf
             // Đảm bảo không có RadioButton nào được chọn khi form hiển thị
             radioButton1.Checked = false;
             radioButton2.Checked = false;
-
-            // Vô hiệu hóa cả hai RadioButton khi form hiển thị
-            radioButton1.Enabled = false;
-            radioButton2.Enabled = false;
 
             // Vô hiệu hóa cả hai Panel khi form hiển thị
             DisableAllPanels();
