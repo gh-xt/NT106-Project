@@ -37,7 +37,6 @@ namespace Werewolf.Views
             {
                 RemoveUser(e.Name);
                 AddChatMessage(string.Empty, e.Name + " bị ngắt kết nối khỏi trò chơi.");
-                // Tuer le joueur
             });
 
             Client.Instance.ServerEvents.AddListener<SetRoleEventArgs>((sender, e) =>

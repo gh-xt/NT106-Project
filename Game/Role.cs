@@ -13,10 +13,7 @@ namespace Werewolf.Game
             return allRoles[id];
         }
         public static Role[] GetAllRoles() => allRoles.Values.ToArray();
-
-        public static Role Cupid;
         public static Role Hunter;
-        public static Role LittleGirl;
         public static Role Seer;
         public static Role Villager;
         public static Role Werewolf;
@@ -26,14 +23,8 @@ namespace Werewolf.Game
         {
             allRoles = new Dictionary<int, Role>();
 
-            Cupid = new Role(0, "Cupid", Team.Village, true,
-                "Đêm đầu tiên bạn sẽ chọn ra hai người và ghép đôi với nhau, nghĩa là " +
-                "nếu một người chết vào ban đêm hoặc ban ngày thì người còn lại sẽ tự tử vì đau buồn. Nếu như " +
-                "đôi tình nhân cùng tồn tại đến cuối cùng thì sẽ chiến thắng.");
             Hunter = new Role(1, "Thợ săn", Team.Village, true,
                 "Khi bạn chết, bạn có thể giết một người.");
-            LittleGirl = new Role(2, "Ti hí", Team.Village, true,
-                "Trong đêm, khi Ma sói thức giấc, bạn có thể thấy những tin nhắn họ gửi cho nhau.");
             Seer = new Role(3, "Tiên tri", Team.Village, true,
                 "Mỗi đêm bạn có thể khám phá vai trò của người chơi mà bạn chọn.");
             Villager = new Role(4, "Dân làng", Team.Village, false,

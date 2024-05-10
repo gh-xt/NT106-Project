@@ -26,13 +26,6 @@ namespace Werewolf.Game
             _overrideTeam = null;
         }
 
-        public void Tag(Tag tag)
-        {
-            _tag |= tag;
-
-            if (tag == Werewolf.Game.Tag.LOVER)
-                _overrideTeam = Team.Lover;
-        }
         public void RemoveTag(Tag tag) => _tag ^= tag;
         public bool IsTagged(Tag tag) => _tag.HasFlag(tag);
 
