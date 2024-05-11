@@ -99,6 +99,12 @@
     <Compile Include="Views\GameView.Designer.cs">
       <DependentUpon>GameView.cs</DependentUpon>
     </Compile>
+    <Compile Include="Views\PrivateChat.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Views\PrivateChat.Designer.cs">
+      <DependentUpon>PrivateChat.cs</DependentUpon>
+    </Compile>
     <Compile Include="Views\RoomView.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -128,6 +134,9 @@
     </Compile>
     <EmbeddedResource Include="Views\MainWindow.resx">
       <DependentUpon>MainWindow.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Views\PrivateChat.resx">
+      <DependentUpon>PrivateChat.cs</DependentUpon>
     </EmbeddedResource>
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
