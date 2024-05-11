@@ -126,8 +126,8 @@
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.ListBox AvailableRoleList;
         private System.Windows.Forms.ListBox ChosenRoleList;
-        private System.Windows.Forms.Button button1;
-        private System.Windows.Forms.Button button2;
-        private System.Windows.Forms.Button button3;
+        private System.Windows.Forms.Button AddRoleBtn;
+        private System.Windows.Forms.Button RemoveRoleBtn;
+        private System.Windows.Forms.Button OkBtn;
     }
 }
