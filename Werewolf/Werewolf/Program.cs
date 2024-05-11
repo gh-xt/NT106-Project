@@ -4,6 +4,8 @@ using System.Linq;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 
+using Werewolf.Views;
+
 namespace Werewolf
 {
     internal static class Program
@@ -16,7 +18,7 @@ namespace Werewolf
         {
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
-            Application.Run(new Form());
+            Application.Run(new MainWindow());
         }
     }
 }

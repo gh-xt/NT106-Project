@@ -99,12 +99,6 @@
     <Compile Include="Views\GameView.Designer.cs">
       <DependentUpon>GameView.cs</DependentUpon>
     </Compile>
-    <Compile Include="Views\MainView.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="Views\MainView.Designer.cs">
-      <DependentUpon>MainView.cs</DependentUpon>
-    </Compile>
     <Compile Include="Views\RoomView.cs">
       <SubType>Form</SubType>
     </Compile>
