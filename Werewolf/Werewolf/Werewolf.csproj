@@ -67,9 +67,9 @@
     <Compile Include="Network\Events\ClientToServerEvents\SendChatMessageEventArgs.cs" />
     <Compile Include="Network\Events\Event.cs" />
     <Compile Include="Network\Events\EventManager.cs" />
-    <Compile Include="Network\Events\ServerClients\ServerEventArgs.cs" />
-    <Compile Include="Network\Events\ServerClients\ServerUserConnectedEventArgs.cs" />
-    <Compile Include="Network\Events\ServerClients\ServerUserDisconnectedEventArgs.cs" />
+    <Compile Include="Network\Events\ServerEvents\ServerEventArgs.cs" />
+    <Compile Include="Network\Events\ServerEvents\ServerUserConnectedEventArgs.cs" />
+    <Compile Include="Network\Events\ServerEvents\ServerUserDisconnectedEventArgs.cs" />
     <Compile Include="Network\Events\ServerToClientEvents\ChatMessageSentEventArgs.cs" />
     <Compile Include="Network\Events\ServerToClientEvents\GameStartedEventArgs.cs" />
     <Compile Include="Network\Events\ServerToClientEvents\ServerToClientEventArgs.cs" />
@@ -78,7 +78,6 @@
     <Compile Include="Network\Events\ServerToClientEvents\UserJoinedEventArgs.cs" />
     <Compile Include="Network\Events\ServerToClientEvents\UserLeftEventArgs.cs" />
     <Compile Include="Network\Events\ServerToClientEvents\UserListSetEventArgs.cs" />
-    <Compile Include="Network\Events\ServerToClientEvents\﻿UserLeftEventArgs.cs" />
     <Compile Include="Network\Exceptions\NameAlreadyTakenException.cs" />
     <Compile Include="Network\Exceptions\UnexpectedPacketException.cs" />
     <Compile Include="Network\Packets\Packet.cs" />
@@ -118,11 +117,11 @@
     <Compile Include="Views\VoteWindow.Designer.cs">
       <DependentUpon>VoteWindow.cs</DependentUpon>
     </Compile>
-    <Compile Include="Views\MainMenu.cs">
+    <Compile Include="Views\MainWindow.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Views\MainMenu.Designer.cs">
-      <DependentUpon>MainMenu.cs</DependentUpon>
+    <Compile Include="Views\MainWindow.Designer.cs">
+      <DependentUpon>MainWindow.cs</DependentUpon>
     </Compile>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>
@@ -133,8 +132,8 @@
       <AutoGen>True</AutoGen>
       <DependentUpon>Resources.resx</DependentUpon>
     </Compile>
-    <EmbeddedResource Include="Views\MainMenu.resx">
-      <DependentUpon>MainMenu.cs</DependentUpon>
+    <EmbeddedResource Include="Views\MainWindow.resx">
+      <DependentUpon>MainWindow.cs</DependentUpon>
     </EmbeddedResource>
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>

@@ -9,6 +9,7 @@ using System.Threading.Tasks;
 
 using Werewolf.Network.Events;
 using Werewolf.Network.Exceptions;
+using Werewolf.Utils;
 
 namespace Werewolf.Network
 {
@@ -105,7 +106,7 @@ namespace Werewolf.Network
                         try
                         {
                             user = new User(Socket_Server.Accept(), List_Users.ToArray());
-                            ServerEvents.RaiseEvent(this, new ServerUserConnectedEventArgs((user)));
+                            ServerEvents.Raise_Event(this, new ServerUserConnectedEventArgs((user)));
                         }
                         catch (NameAlreadyTakenException)
                         {
@@ -130,7 +131,7 @@ namespace Werewolf.Network
                 {
                     while (true)
                     {
-                        User_Events.RaiseEvent(user, user.ExpectEvent());
+                        User_Events.Raise_Event(user, user.ExpectEvent());
                     }
                 }
                 catch (Exception e) when (
@@ -144,7 +145,7 @@ namespace Werewolf.Network
                 finally
                 {
                     if (!user.IsHost)
-                        ServerEvents.RaiseEvent(new ServerUserDisconnectedEventArgs((user)));
+                        ServerEvents.Raise_Event(new ServerUserDisconnectedEventArgs((user)));
                 }
 
             });

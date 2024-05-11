@@ -7,6 +7,7 @@ using System.Threading.Tasks;
 using System.Windows;
 
 using Werewolf.Game;
+using Werewolf.Views;
 using Werewolf.Network.Events;
 using Werewolf.Network.Packets;
 
@@ -85,7 +86,7 @@ namespace Werewolf.Network
                 {
                     while (true)
                     {
-                        ServerEvents.RaiseEvent(ExpectEvent());
+                        ServerEvents.Raise_Event(ExpectEvent());
                     }
                 }
                 catch (Exception e) when (
@@ -94,18 +95,14 @@ namespace Werewolf.Network
                     e is ObjectDisposedException ||
                     e is IOException)
                 {
-                    MessageBox.ShowException(e);
+                    Utils. MessageBox.ShowException(e);
                 }
                 finally
                 {
                     if (!is_Closing)
                     {
-                        MessageBox.ShowError("Đã xảy ra lỗi: máy chủ không thể truy cập được nữa.", "Lỗi - Máy chủ không thể truy cập được", MessageBoxButton.OK, MessageBoxImage.Error);
+                        MessageBox.Show("Đã xảy ra lỗi: máy chủ không thể truy cập được nữa.", "Lỗi - Máy chủ không thể truy cập được", MessageBoxButton.OK, MessageBoxImage.Error);
                         Disconnect();
-                        Application.Current.Dispatcher.Invoke(() =>
-                        {
-                            ((MainWindow)Application.Current.MainWindow).SetView<MainView>();
-                        });
                     }
                 }
             });

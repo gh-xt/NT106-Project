@@ -12,9 +12,9 @@ using static System.Windows.Forms.VisualStyles.VisualStyleElement.StartPanel;
 
 namespace Werewolf.Views
 {
-    public partial class MainMenu : Form
+    public partial class MainWindow : Form
     {
-        public MainMenu()
+        public MainWindow()
         {
             InitializeComponent();
             InitializeForm(); // Khởi tạo form khi hiển thị lên
