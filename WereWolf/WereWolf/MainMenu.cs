@@ -21,7 +21,8 @@ namespace WereWolf
 
         private void InitializeForm()
         {
-            textBox1.Focus();
+           
+            UserName.Focus();
 
             // Đảm bảo không có RadioButton nào được chọn khi form hiển thị
             radioButton1.Checked = false;

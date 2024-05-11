@@ -35,12 +35,12 @@
             this.label3 = new System.Windows.Forms.Label();
             this.radioButton1 = new System.Windows.Forms.RadioButton();
             this.label4 = new System.Windows.Forms.Label();
-            this.textBox1 = new System.Windows.Forms.TextBox();
-            this.button1 = new System.Windows.Forms.Button();
+            this.UserName = new System.Windows.Forms.TextBox();
+            this.RoomConnectBtn = new System.Windows.Forms.Button();
             this.backgroundWorker1 = new System.ComponentModel.BackgroundWorker();
-            this.textBox2 = new System.Windows.Forms.TextBox();
+            this.RoomIPAddress = new System.Windows.Forms.TextBox();
             this.radioButton2 = new System.Windows.Forms.RadioButton();
-            this.button2 = new System.Windows.Forms.Button();
+            this.RoomCreate = new System.Windows.Forms.Button();
             this.panel1 = new System.Windows.Forms.Panel();
             this.panel2 = new System.Windows.Forms.Panel();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
@@ -113,36 +113,36 @@
             this.label4.TabIndex = 7;
             this.label4.Text = "Tên:";
             // 
-            // textBox1
+            // UserName
             // 
-            this.textBox1.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.textBox1.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.textBox1.Location = new System.Drawing.Point(269, 258);
-            this.textBox1.Name = "textBox1";
-            this.textBox1.Size = new System.Drawing.Size(160, 26);
-            this.textBox1.TabIndex = 8;
+            this.UserName.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.UserName.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.UserName.Location = new System.Drawing.Point(275, 262);
+            this.UserName.Name = "UserName";
+            this.UserName.Size = new System.Drawing.Size(160, 22);
+            this.UserName.TabIndex = 8;
             // 
-            // button1
+            // RoomConnectBtn
             // 
-            this.button1.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("button1.BackgroundImage")));
-            this.button1.BackgroundImageLayout = System.Windows.Forms.ImageLayout.None;
-            this.button1.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.button1.ImageAlign = System.Drawing.ContentAlignment.MiddleRight;
-            this.button1.Location = new System.Drawing.Point(171, 56);
-            this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(160, 25);
-            this.button1.TabIndex = 9;
-            this.button1.Text = "Tham gia";
-            this.button1.UseVisualStyleBackColor = true;
+            this.RoomConnectBtn.BackgroundImageLayout = System.Windows.Forms.ImageLayout.None;
+            this.RoomConnectBtn.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.RoomConnectBtn.Image = ((System.Drawing.Image)(resources.GetObject("RoomConnectBtn.Image")));
+            this.RoomConnectBtn.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.RoomConnectBtn.Location = new System.Drawing.Point(171, 44);
+            this.RoomConnectBtn.Name = "RoomConnectBtn";
+            this.RoomConnectBtn.Size = new System.Drawing.Size(154, 38);
+            this.RoomConnectBtn.TabIndex = 9;
+            this.RoomConnectBtn.Text = "Tham gia";
+            this.RoomConnectBtn.UseVisualStyleBackColor = true;
             // 
-            // textBox2
+            // RoomIPAddress
             // 
-            this.textBox2.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.textBox2.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.textBox2.Location = new System.Drawing.Point(150, 12);
-            this.textBox2.Name = "textBox2";
-            this.textBox2.Size = new System.Drawing.Size(191, 26);
-            this.textBox2.TabIndex = 10;
+            this.RoomIPAddress.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.RoomIPAddress.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.RoomIPAddress.Location = new System.Drawing.Point(171, 12);
+            this.RoomIPAddress.Name = "RoomIPAddress";
+            this.RoomIPAddress.Size = new System.Drawing.Size(154, 26);
+            this.RoomIPAddress.TabIndex = 10;
             // 
             // radioButton2
             // 
@@ -158,23 +158,23 @@
             this.radioButton2.UseVisualStyleBackColor = false;
             this.radioButton2.CheckedChanged += new System.EventHandler(this.radioButton2_CheckedChanged);
             // 
-            // button2
+            // RoomCreate
             // 
-            this.button2.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("button2.BackgroundImage")));
-            this.button2.BackgroundImageLayout = System.Windows.Forms.ImageLayout.None;
-            this.button2.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.button2.ImageAlign = System.Drawing.ContentAlignment.MiddleRight;
-            this.button2.Location = new System.Drawing.Point(94, 35);
-            this.button2.Name = "button2";
-            this.button2.Size = new System.Drawing.Size(160, 25);
-            this.button2.TabIndex = 12;
-            this.button2.Text = "Tham gia";
-            this.button2.UseVisualStyleBackColor = true;
+            this.RoomCreate.BackgroundImageLayout = System.Windows.Forms.ImageLayout.None;
+            this.RoomCreate.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.RoomCreate.Image = ((System.Drawing.Image)(resources.GetObject("RoomCreate.Image")));
+            this.RoomCreate.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.RoomCreate.Location = new System.Drawing.Point(93, 23);
+            this.RoomCreate.Name = "RoomCreate";
+            this.RoomCreate.Size = new System.Drawing.Size(160, 39);
+            this.RoomCreate.TabIndex = 12;
+            this.RoomCreate.Text = "Tạo phòng";
+            this.RoomCreate.UseVisualStyleBackColor = true;
             // 
             // panel1
             // 
-            this.panel1.Controls.Add(this.textBox2);
-            this.panel1.Controls.Add(this.button1);
+            this.panel1.Controls.Add(this.RoomIPAddress);
+            this.panel1.Controls.Add(this.RoomConnectBtn);
             this.panel1.Controls.Add(this.label3);
             this.panel1.Location = new System.Drawing.Point(140, 338);
             this.panel1.Name = "panel1";
@@ -183,10 +183,10 @@
             // 
             // panel2
             // 
-            this.panel2.Controls.Add(this.button2);
+            this.panel2.Controls.Add(this.RoomCreate);
             this.panel2.Location = new System.Drawing.Point(140, 499);
             this.panel2.Name = "panel2";
-            this.panel2.Size = new System.Drawing.Size(344, 100);
+            this.panel2.Size = new System.Drawing.Size(344, 83);
             this.panel2.TabIndex = 15;
             // 
             // MainMenu
@@ -198,7 +198,7 @@
             this.Controls.Add(this.panel2);
             this.Controls.Add(this.panel1);
             this.Controls.Add(this.radioButton2);
-            this.Controls.Add(this.textBox1);
+            this.Controls.Add(this.UserName);
             this.Controls.Add(this.label4);
             this.Controls.Add(this.radioButton1);
             this.Controls.Add(this.label2);
@@ -224,12 +224,12 @@
         private System.Windows.Forms.Label label3;
         private System.Windows.Forms.RadioButton radioButton1;
         private System.Windows.Forms.Label label4;
-        private System.Windows.Forms.TextBox textBox1;
-        private System.Windows.Forms.Button button1;
+        private System.Windows.Forms.TextBox UserName;
+        private System.Windows.Forms.Button RoomConnectBtn;
         private System.ComponentModel.BackgroundWorker backgroundWorker1;
-        private System.Windows.Forms.TextBox textBox2;
+        private System.Windows.Forms.TextBox RoomIPAddress;
         private System.Windows.Forms.RadioButton radioButton2;
-        private System.Windows.Forms.Button button2;
+        private System.Windows.Forms.Button RoomCreate;
         private System.Windows.Forms.Panel panel1;
         private System.Windows.Forms.Panel panel2;
     }
