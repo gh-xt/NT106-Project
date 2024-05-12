@@ -33,30 +33,30 @@ namespace Werewolf.Views
                 StartGame.Visibility = Visibility.Hidden;
             }
 
-            Client.Instance.ServerEvents.AddListener<UserListSetEventArgs>((sender, e) =>
+            Client.Instance.ServerEvents.Add_Listener<UserListSetEventArgs>((sender, e) =>
             {
                 foreach (string user in e.UserList)
                     AddUser(user);
             });
 
-            Client.Instance.ServerEvents.AddListener<ChatMessageSentEventArgs>((sender, e) =>
+            Client.Instance.ServerEvents.Add_Listener<ChatMessageSentEventArgs>((sender, e) =>
             {
                 AddChatMessage(e.Name, e.Message);
             });
 
-            Client.Instance.ServerEvents.AddListener<UserJoinedEventArgs>((sender, e) =>
+            Client.Instance.ServerEvents.Add_Listener<UserJoinedEventArgs>((sender, e) =>
             {
                 AddUser(e.Name);
                 AddChatMessage(string.Empty, e.Name + " vừa vào phòng!");
             });
 
-            Client.Instance.ServerEvents.AddListener<UserLeftEventArgs>((sender, e) =>
+            Client.Instance.ServerEvents.Add_Listener<UserLeftEventArgs>((sender, e) =>
             {
                 RemoveUser(e.Name);
                 AddChatMessage(string.Empty, e.Name + " bị ngắt kết nối!");
             });
 
-            Client.Instance.ServerEvents.AddListener<GameStartedEventArgs>((sender, e) =>
+            Client.Instance.ServerEvents.Add_Listener<GameStartedEventArgs>((sender, e) =>
             {
                 Dispatcher.Invoke(() =>
                 {
@@ -117,7 +117,7 @@ namespace Werewolf.Views
                 await Task.Delay(1000);
             }
 
-            Server.Instance.SendEvent(new GameStartedEventArgs(Game.Game.Instance.GetRoles().Select((role) => role.Id).ToArray()));
+            Server.Instance.SendEvent(new GameStartedEventArgs(Game.Game.Instance.Get_Roles().Select((role) => role.Id).ToArray()));
         }
 
         private void SendMessage_Click(object sender, RoutedEventArgs e)

@@ -11,22 +11,22 @@ namespace Werewolf.Views
 {
     public partial class GameSettingsWindow : Window
     {
-        private RoomView _roomView;
+        private RoomView room_View;
 
         public GameSettingsWindow(MainWindow window)
         {
             InitializeComponent();
             Owner = window;
-            _roomView = null;
+            room_View = null;
 
             Closing += (sender, e) =>
             {
                 try
                 {
-                    Game.Game.Instance.ValidateRoles();
+                    Game.Game.Instance.Validate_Roles();
 
-                    if (_roomView != null)
-                        _roomView.EnableStartGameButton();
+                    if (room_View != null)
+                        room_View.EnableStartGameButton();
                 }
                 catch (NotEnoughWerewolfException)
                 {
@@ -52,11 +52,11 @@ namespace Werewolf.Views
 
             foreach (Role role in Role.GetAllRoles())
             {
-                if (!Game.Game.Instance.ContainsRole(role) || !role.IsUnique)
+                if (!Game.Game.Instance.Contain_Role(role) || !role.IsUnique)
                     AddRoleAndSort(AvailableRoleList, role);
             }
 
-            foreach (Role role in Game.Game.Instance.GetRoles())
+            foreach (Role role in Game.Game.Instance.Get_Roles())
                 AddRoleAndSort(ChosenRoleList, role);
         }
 
@@ -88,7 +88,7 @@ namespace Werewolf.Views
             Role role = (Role)(((ListBoxItem)AvailableRoleList.Items[index]).DataContext);
 
             AddRoleAndSort(ChosenRoleList, role);
-            Game.Game.Instance.AddRole(role);
+            Game.Game.Instance.Add_Role(role);
             if (role.IsUnique)
                 AvailableRoleList.Items.RemoveAt(index);
         }
@@ -101,7 +101,7 @@ namespace Werewolf.Views
             Role role = (Role)(((ListBoxItem)ChosenRoleList.Items[index]).DataContext);
 
             ChosenRoleList.Items.RemoveAt(index);
-            Game.Game.Instance.RemoveRole(role);
+            Game.Game.Instance.Del_Role(role);
             if (role.IsUnique)
                 AddRoleAndSort(AvailableRoleList, role);
         }
@@ -113,7 +113,7 @@ namespace Werewolf.Views
 
         public void SetRoomView(RoomView roomView)
         {
-            _roomView = roomView;
+            room_View = roomView;
         }
     }
 }

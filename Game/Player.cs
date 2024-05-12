@@ -1,5 +1,4 @@
 ﻿﻿using System;
-using System.Data;
 using Werewolf.Network;
 
 namespace Werewolf.Game

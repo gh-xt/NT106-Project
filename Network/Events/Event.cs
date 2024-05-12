@@ -12,8 +12,8 @@ namespace Werewolf.Network.Events
 
         public Event() { }
 
-        public void AddListener(EventHandler<TEventArgs> listener) => Listeners += listener;
-        public void RaiseEvent(TEventArgs e) => Listeners?.Invoke(this, e);
-        public void RaiseEvent(object sender, TEventArgs e) => Listeners?.Invoke(sender, e);
+        public void Add_Listener(EventHandler<TEventArgs> listener) => Listeners += listener;
+        public void Raise_Event(TEventArgs e) => Listeners?.Invoke(this, e);
+        public void Raise_Event(object sender, TEventArgs e) => Listeners?.Invoke(sender, e);
     }
 }
