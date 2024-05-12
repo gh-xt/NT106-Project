@@ -17,14 +17,21 @@ namespace Werewolf.Views
     /// </summary>
     public partial class GameView : UserControl
     {
+        private bool _voteActivated;
+        private bool _actionActivated;
+        private string _myRole;
+        private bool _isDead;
         private readonly MainWindow _window;
         private bool _hasScroll;
 
-        public GameView(MainWindow window)
+    public GameView(MainWindow window)
         {
             InitializeComponent();
             _window = window;
             _hasScroll = false;
+            _voteActivated = false;
+            _actionActivated = false;
+            _isDead = false;
 
             ChatBox.Document.Blocks.Clear();
 
@@ -78,13 +85,13 @@ namespace Werewolf.Views
 
             if (Server.Instance.Started)
             {
-                Game.Game.Instance.AssignRolesRandomly();
+                Game.Game.Instance.Assign_Roles_Random();
 
                 foreach (Player player in Game.Game.Instance.Get_Players())
                     player.User.SendEvent(new SetRoleEventArgs(player.Role.Id));
 
                 Game.Game.Instance.SendEvent(new ChatMessageSentEventArgs(string.Empty, "Đêm đầu tiên bắt đầu sau 15 giây..."));
-                Game.Game.Instance.StartGameLoop();
+                Game.Game.Instance.StartGame_Loop();
             }
         }
 
@@ -158,6 +165,29 @@ namespace Werewolf.Views
         private void ChatBox_TextChanged(object sender, TextChangedEventArgs e)
         {
 
+        }
+
+        private void ActionBtn(object sender, RoutedEventArgs e)
+        {
+
+        }
+
+        private void VoteBtn(object sender, RoutedEventArgs e)
+        {
+            if (_voteActivated)
+            {
+                Vote.Background = Brushes.Gray;
+            }
+            else
+            {
+                Vote.Background = Brushes.Red;
+            }
+            _voteActivated = !_voteActivated;
+            if (_actionActivated)
+            {
+                Action.Background = Brushes.Gray;
+                _actionActivated = false;
+            }
         }
     }
 }
