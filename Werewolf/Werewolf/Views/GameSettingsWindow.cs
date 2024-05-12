@@ -12,9 +12,17 @@ namespace Werewolf.Views
 {
     public partial class GameSettingsWindow : Form
     {
+        private RoomView room_View;
         public GameSettingsWindow()
         {
             InitializeComponent();
+
+        }
+        
+        public void SetRoomView(RoomView roomView)
+        {
+
+            room_View = roomView;
         }
     }
 }

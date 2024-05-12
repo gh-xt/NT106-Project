@@ -4,9 +4,12 @@ using System.ComponentModel;
 using System.Data;
 using System.Drawing;
 using System.Linq;
+using System.Net.Sockets;
+using System.Net;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using Werewolf.Network;
 using static System.Windows.Forms.VisualStyles.VisualStyleElement.Button;
 using static System.Windows.Forms.VisualStyles.VisualStyleElement.StartPanel;
 
@@ -84,7 +87,79 @@ namespace Werewolf.Views
             UpdatePanelColors(); // Cập nhật màu nền của các panel sau khi thay đổi trạng thái
         }
 
+        private string GetIPAddress()
+        {
+            string ipAddress = string.Empty;
+            string hostname = Dns.GetHostName();
+            IPHostEntry host = Dns.GetHostEntry(hostname);
 
+            foreach (IPAddress ip in host.AddressList)
+            {
+                if (ip.AddressFamily == AddressFamily.InterNetwork)
+                {
+                    ipAddress = ip.ToString();
+                    break; // Dừng khi tìm thấy địa chỉ IPv4 đầu tiên
+                }
+            }
+
+            return ipAddress;
+        }
+
+        private void ConnectClient(string ipAddressString = null)
+        {
+            UserName.Text = UserName.Text.Trim();
+            string ip = GetIPAddress();
+
+            if (UserName.Text.Length < 3)
+            {
+                MessageBox.Show("Tên của bạn phải chứa ít nhất 3 chữ cái!", "Lỗi - Tên không hợp lệ", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return;
+            }
+
+            IPAddress ipAddress = IPAddress.Parse(ip);
+
+            if (ipAddressString != null)
+            {
+                bool isValid = IPAddress.TryParse(ipAddressString, out ipAddress);
+
+                if (!isValid)
+                {
+                    MessageBox.Show("Địa chỉ IP không hợp lệ!", "Lỗi - Địa chỉ IP không hợp lệ", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    return;
+                }
+            }
+            else
+            {
+                // Khởi động máy chủ nếu không có địa chỉ IP được cung cấp
+                //Server.Instance.Start(); // Khởi động Server trong WinForms
+            }
+
+            if (Client.Instance.Connect(UserName.Text, ipAddress))
+            {
+                // Thực hiện hành động chuyển giao diện tại đây (ví dụ: hiển thị RoomView)
+                MessageBox.Show("Kết nối thành công!", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                // Gọi phương thức SetView của _window để chuyển giao diện
+                //_window.SetView<RoomView>();
+            }
+            else
+            {
+                MessageBox.Show("Tên người dùng bạn chọn đã được sử dụng!", "Lỗi - Tên người dùng đã sử dụng", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                Client.Instance.Disconnect();
+            }
+        }
+
+        private void RoomConnectBtn_Click(object sender, EventArgs e)
+        {
+            ConnectClient(RoomIPAddress.Text);
+        }
+
+        private void RoomCreateBtn_Click(object sender, EventArgs e)
+        {
+            ConnectClient();
+        }
     }
 
+
 }
+
+

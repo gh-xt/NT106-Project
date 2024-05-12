@@ -133,6 +133,7 @@
             this.RoomConnectBtn.TabIndex = 9;
             this.RoomConnectBtn.Text = "Tham gia";
             this.RoomConnectBtn.UseVisualStyleBackColor = true;
+            this.RoomConnectBtn.Click += new System.EventHandler(this.RoomConnectBtn_Click);
             // 
             // RoomIPAddress
             // 
@@ -168,6 +169,7 @@
             this.RoomCreate.TabIndex = 12;
             this.RoomCreate.Text = "Tạo phòng";
             this.RoomCreate.UseVisualStyleBackColor = true;
+            this.RoomCreate.Click += new System.EventHandler(this.RoomCreateBtn_Click);
             // 
             // panel1
             // 
@@ -187,7 +189,7 @@
             this.panel2.Size = new System.Drawing.Size(344, 83);
             this.panel2.TabIndex = 15;
             // 
-            // MainMenu
+            // MainWindow
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
@@ -202,8 +204,8 @@
             this.Controls.Add(this.label2);
             this.Controls.Add(this.label1);
             this.Controls.Add(this.pictureBox1);
-            this.Name = "MainMenu";
-            this.Text = "MainMenu";
+            this.Name = "MainWindow";
+            this.Text = "MainWindow";
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
             this.panel1.ResumeLayout(false);
             this.panel1.PerformLayout();

@@ -32,8 +32,8 @@
             this.UserList = new System.Windows.Forms.ListBox();
             this.StartGame = new System.Windows.Forms.Button();
             this.SendMessage = new System.Windows.Forms.Button();
-            this.button2 = new System.Windows.Forms.Button();
-            this.richTextBox1 = new System.Windows.Forms.RichTextBox();
+            this.SettingsBtn = new System.Windows.Forms.Button();
+            this.ChatBox = new System.Windows.Forms.RichTextBox();
             this.Message = new System.Windows.Forms.TextBox();
             this.label1 = new System.Windows.Forms.Label();
             this.textBox1 = new System.Windows.Forms.TextBox();
@@ -70,30 +70,32 @@
             this.SendMessage.TabIndex = 2;
             this.SendMessage.Text = "Gửi";
             this.SendMessage.UseVisualStyleBackColor = true;
+
             // 
-            // button2
+            // SettingsBtn
             // 
-            this.button2.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.button2.Image = ((System.Drawing.Image)(resources.GetObject("button2.Image")));
-            this.button2.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.button2.Location = new System.Drawing.Point(347, 7);
-            this.button2.Name = "button2";
-            this.button2.Size = new System.Drawing.Size(147, 35);
-            this.button2.TabIndex = 3;
-            this.button2.Text = "Cài đặt";
-            this.button2.UseVisualStyleBackColor = true;
+            this.SettingsBtn.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.SettingsBtn.Image = ((System.Drawing.Image)(resources.GetObject("SettingsBtn.Image")));
+            this.SettingsBtn.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.SettingsBtn.Location = new System.Drawing.Point(347, 7);
+            this.SettingsBtn.Name = "SettingsBtn";
+            this.SettingsBtn.Size = new System.Drawing.Size(147, 35);
+            this.SettingsBtn.TabIndex = 3;
+            this.SettingsBtn.Text = "Cài đặt";
+            this.SettingsBtn.UseVisualStyleBackColor = true;
+
             // 
-            // richTextBox1
+            // ChatBox
             // 
-            this.richTextBox1.BackColor = System.Drawing.SystemColors.Window;
-            this.richTextBox1.BorderStyle = System.Windows.Forms.BorderStyle.None;
-            this.richTextBox1.Cursor = System.Windows.Forms.Cursors.IBeam;
-            this.richTextBox1.Location = new System.Drawing.Point(14, 48);
-            this.richTextBox1.Name = "richTextBox1";
-            this.richTextBox1.ReadOnly = true;
-            this.richTextBox1.Size = new System.Drawing.Size(480, 342);
-            this.richTextBox1.TabIndex = 4;
-            this.richTextBox1.Text = "";
+            this.ChatBox.BackColor = System.Drawing.SystemColors.Window;
+            this.ChatBox.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            this.ChatBox.Cursor = System.Windows.Forms.Cursors.IBeam;
+            this.ChatBox.Location = new System.Drawing.Point(14, 48);
+            this.ChatBox.Name = "ChatBox";
+            this.ChatBox.ReadOnly = true;
+            this.ChatBox.Size = new System.Drawing.Size(480, 342);
+            this.ChatBox.TabIndex = 4;
+            this.ChatBox.Text = "";
             // 
             // Message
             // 
@@ -124,7 +126,7 @@
             this.textBox1.Size = new System.Drawing.Size(165, 15);
             this.textBox1.TabIndex = 7;
             // 
-            // Room
+            // RoomView
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
@@ -132,13 +134,13 @@
             this.Controls.Add(this.textBox1);
             this.Controls.Add(this.label1);
             this.Controls.Add(this.Message);
-            this.Controls.Add(this.richTextBox1);
-            this.Controls.Add(this.button2);
+            this.Controls.Add(this.ChatBox);
+            this.Controls.Add(this.SettingsBtn);
             this.Controls.Add(this.SendMessage);
             this.Controls.Add(this.StartGame);
             this.Controls.Add(this.UserList);
-            this.Name = "Room";
-            this.Text = "Room";
+            this.Name = "RoomView";
+            this.Text = "RoomView";
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -149,8 +151,8 @@
         private System.Windows.Forms.ListBox UserList;
         private System.Windows.Forms.Button StartGame;
         private System.Windows.Forms.Button SendMessage;
-        private System.Windows.Forms.Button button2;
-        private System.Windows.Forms.RichTextBox richTextBox1;
+        private System.Windows.Forms.Button SettingsBtn;
+        private System.Windows.Forms.RichTextBox ChatBox;
         private System.Windows.Forms.TextBox Message;
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.TextBox textBox1;
