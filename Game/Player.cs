@@ -1,7 +1,5 @@
 ﻿﻿using System;
-using System.Data;
 using Werewolf.Network;
-using static System.Windows.Forms.VisualStyles.VisualStyleElement;
 
 namespace Werewolf.Game
 {

@@ -1,5 +1,4 @@
 ﻿using System;
-using System.Text;
 using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Controls.Primitives;
@@ -28,19 +27,19 @@ namespace Werewolf.Views
 
             ChatBox.Document.Blocks.Clear();
 
-            Client.Instance.ServerEvents.AddListener<ChatMessageSentEventArgs>((sender, e) =>
+            Client.Instance.ServerEvents.Add_Listener<ChatMessageSentEventArgs>((sender, e) =>
             {
                 AddChatMessage(e.Name, e.Message);
             });
 
-            Client.Instance.ServerEvents.AddListener<UserLeftEventArgs>((sender, e) =>
+            Client.Instance.ServerEvents.Add_Listener<UserLeftEventArgs>((sender, e) =>
             {
                 RemoveUser(e.Name);
                 AddChatMessage(string.Empty, e.Name + " bị ngắt kết nối khỏi trò chơi.");
                 // Tuer le joueur
             });
 
-            Client.Instance.ServerEvents.AddListener<SetRoleEventArgs>((sender, e) =>
+            Client.Instance.ServerEvents.Add_Listener<SetRoleEventArgs>((sender, e) =>
             {
                 Role role = Role.GetRoleById(e.RoleId);
                 Client.Instance.Role = role;
@@ -65,7 +64,7 @@ namespace Werewolf.Views
                 });
             });
 
-            Client.Instance.ServerEvents.AddListener<TimerUpdatedEventArgs>((sender, e) =>
+            Client.Instance.ServerEvents.Add_Listener<TimerUpdatedEventArgs>((sender, e) =>
             {
                 Dispatcher.Invoke(() =>
                 {
@@ -78,13 +77,13 @@ namespace Werewolf.Views
 
             if (Server.Instance.Started)
             {
-                Game.Game.Instance.AssignRolesRandomly();
+                Game.Game.Instance.Assign_Roles_Random();
 
                 foreach (Player player in Game.Game.Instance.Get_Players())
                     player.User.SendEvent(new SetRoleEventArgs(player.Role.Id));
 
                 Game.Game.Instance.SendEvent(new ChatMessageSentEventArgs(string.Empty, "Đêm đầu tiên bắt đầu sau 15 giây..."));
-                Game.Game.Instance.StartGameLoop();
+                Game.Game.Instance.StartGame_Loop();
             }
         }
 

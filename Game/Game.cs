@@ -7,7 +7,6 @@ using System.Threading.Tasks;
 using Werewolf.Game.Exceptions;
 using Werewolf.Network;
 using Werewolf.Network.Events;
-using static System.Windows.Forms.VisualStyles.VisualStyleElement;
 
 namespace Werewolf.Game
 {

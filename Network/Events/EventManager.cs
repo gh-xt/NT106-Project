@@ -24,19 +24,19 @@ namespace Werewolf.Network.Events
             return (Event<TEventArgs>)_events[type];
         }
 
-        public void AddListener<TEventArgs>(EventHandler<TEventArgs> listener) where TEventArgs : TBaseEventArgs
+        public void Add_Listener<TEventArgs>(EventHandler<TEventArgs> listener) where TEventArgs : TBaseEventArgs
         {
-            GetEvent<TEventArgs>().AddListener(listener);
+            GetEvent<TEventArgs>().Add_Listener(listener);
         }
 
-        public void RaiseEvent<TEventArgs>(TEventArgs e) where TEventArgs : TBaseEventArgs
+        public void Raise_Event<TEventArgs>(TEventArgs e) where TEventArgs : TBaseEventArgs
         {
-            GetEvent<TEventArgs>().RaiseEvent(e);
+            GetEvent<TEventArgs>().Raise_Event(e);
         }
 
-        public void RaiseEvent<TEventArgs>(object sender, TEventArgs e) where TEventArgs : TBaseEventArgs
+        public void Raise_Event<TEventArgs>(object sender, TEventArgs e) where TEventArgs : TBaseEventArgs
         {
-            GetEvent<TEventArgs>().RaiseEvent(sender, e);
+            GetEvent<TEventArgs>().Raise_Event(sender, e);
         }
     }
 }
