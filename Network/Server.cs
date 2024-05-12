@@ -110,7 +110,7 @@ namespace Werewolf.Network
                         }
                         catch (NameAlreadyTakenException)
                         {
-                            user.Disconnect();
+                            
                         }
                     }
                 }

@@ -1,4 +1,6 @@
 ﻿using System;
+using System.Collections.Generic;
+using System.Linq;
 using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Controls.Primitives;
@@ -43,7 +45,6 @@ namespace Werewolf.Views
             {
                 RemoveUser(e.Name);
                 AddChatMessage(string.Empty, e.Name + " bị ngắt kết nối khỏi trò chơi.");
-                // Tuer le joueur
             });
 
             Client.Instance.ServerEvents.Add_Listener<SetRoleEventArgs>((sender, e) =>
@@ -170,7 +171,22 @@ namespace Werewolf.Views
         {
 
         }
+        private void VoteWerewolf(ListBox listBox, User Voted)
+        {
+            ItemCollection collection = listBox.Items;
 
+            ListBoxItem item = new ListBoxItem
+            {
+                DataContext = Voted,
+                Content = Voted.Name
+            };
+
+            collection.Add(item);
+            List<ListBoxItem> list = collection.Cast<ListBoxItem>().ToList();
+
+            foreach (ListBoxItem listBoxItem in list)
+                collection.Add(listBoxItem);
+        }
         private void VoteBtn(object sender, RoutedEventArgs e)
         {
             if (_voteActivated)
@@ -187,6 +203,18 @@ namespace Werewolf.Views
                 Action.Background = Brushes.Gray;
                 _actionActivated = false;
             }
+            if (UserList.SelectedItem == null) return;
+            DeathList.Items.Add (UserList.SelectedItem.ToString());
+        }
+
+        private void UserList_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        {
+
+        }
+
+        private void ListBox_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        {
+
         }
     }
 }
