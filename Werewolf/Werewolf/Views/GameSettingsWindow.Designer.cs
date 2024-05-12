@@ -74,6 +74,7 @@ namespace Werewolf.Views
             this.ChosenRoleList.Name = "ChosenRoleList";
             this.ChosenRoleList.Size = new System.Drawing.Size(167, 329);
             this.ChosenRoleList.TabIndex = 3;
+            this.ChosenRoleList.SelectedIndexChanged += new System.EventHandler(this.ChosenRoleList_SelectedIndexChanged);
             // 
             // AddRoleBtn
             // 

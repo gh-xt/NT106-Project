@@ -24,5 +24,10 @@ namespace Werewolf.Views
 
             room_View = roomView;
         }
+
+        private void ChosenRoleList_SelectedIndexChanged(object sender, EventArgs e)
+        {
+
+        }
     }
 }
