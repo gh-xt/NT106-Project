@@ -1,6 +1,8 @@
-﻿using System;
+﻿﻿using System;
 using System.Collections.Generic;
+using System.Drawing;
 using System.Windows.Media;
+using Color = System.Windows.Media.Color;
 
 namespace Werewolf.Game
 {
@@ -15,7 +17,6 @@ namespace Werewolf.Game
 
         public static Team Village;
         public static Team Werewolf;
-        public static Team Lover;
 
         static Team()
         {
@@ -23,7 +24,6 @@ namespace Werewolf.Game
 
             Village = new Team(0, "Dân làng", Color.FromRgb(32, 160, 32));
             Werewolf = new Team(1, "Ma sói", Color.FromRgb(160, 32, 32));
-            Lover = new Team(2, "Người yêu", Color.FromRgb(192, 128, 192));
         }
 
         public int Id { get; }

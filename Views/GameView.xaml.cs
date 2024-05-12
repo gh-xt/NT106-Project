@@ -80,7 +80,7 @@ namespace Werewolf.Views
             {
                 Game.Game.Instance.AssignRolesRandomly();
 
-                foreach (Player player in Game.Game.Instance.GetPlayers())
+                foreach (Player player in Game.Game.Instance.Get_Players())
                     player.User.SendEvent(new SetRoleEventArgs(player.Role.Id));
 
                 Game.Game.Instance.SendEvent(new ChatMessageSentEventArgs(string.Empty, "Đêm đầu tiên bắt đầu sau 15 giây..."));

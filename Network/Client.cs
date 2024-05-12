@@ -1,4 +1,4 @@
-﻿using System;
+﻿﻿using System;
 using System.IO;
 using System.Net;
 using System.Net.Sockets;
@@ -7,9 +7,9 @@ using System.Threading.Tasks;
 using System.Windows;
 
 using Werewolf.Game;
+using Werewolf.Views;
 using Werewolf.Network.Events;
 using Werewolf.Network.Packets;
-using Werewolf.Views;
 
 namespace Werewolf.Network
 {
@@ -24,21 +24,21 @@ namespace Werewolf.Network
     public class Client
     {
         #region Singleton
-        private static Client _instance = null;
+        private static Client instance = null;
         public static Client Instance
         {
             get
             {
-                if (_instance == null)
-                    _instance = new Client();
-                return _instance;
+                if (instance == null)
+                    instance = new Client();
+                return instance;
             }
         }
         #endregion Singleton
 
-        private Socket _client;
-        private PacketManager _packets;
-        private bool _isClosing;
+        private Socket Socket_Client;
+        private PacketManager PManager_Packets;
+        private bool is_Closing;
 
         public string Name { get; private set; }
         public bool IsHost => Server.Instance.Started;
@@ -53,8 +53,8 @@ namespace Werewolf.Network
 
         private void Reset()
         {
-            _client = new Socket(AddressFamily.InterNetwork, SocketType.Stream, ProtocolType.Tcp);
-            _packets = null;
+            Socket_Client = new Socket(AddressFamily.InterNetwork, SocketType.Stream, ProtocolType.Tcp);
+            PManager_Packets = null;
 
             Name = string.Empty;
             IPAddressString = "<Not connected>";
@@ -64,13 +64,13 @@ namespace Werewolf.Network
 
         public bool Connect(string name, IPAddress ipAddress)
         {
-            if (_client.Connected) return true;
+            if (Socket_Client.Connected) return true;
 
-            _client.Connect(ipAddress, Server.DEFAULT_PORT);
-            _packets = new PacketManager(new NetworkStream(_client));
+            Socket_Client.Connect(ipAddress, Server.DEFAULT_PORT);
+            PManager_Packets = new PacketManager(new NetworkStream(Socket_Client));
 
-            _packets.Send(new Packet<string>(name));
-            Packet<bool> packetIsNameTaken = _packets.Expect<Packet<bool>>();
+            PManager_Packets.Send(new Packet<string>(name));
+            Packet<bool> packetIsNameTaken = PManager_Packets.Expect<Packet<bool>>();
 
             Name = name;
             IPAddressString = ipAddress.ToString();
@@ -86,7 +86,7 @@ namespace Werewolf.Network
                 {
                     while (true)
                     {
-                        ServerEvents.RaiseEvent(ExpectEvent());
+                        ServerEvents.Raise_Event(ExpectEvent());
                     }
                 }
                 catch (Exception e) when (
@@ -95,18 +95,14 @@ namespace Werewolf.Network
                     e is ObjectDisposedException ||
                     e is IOException)
                 {
-                    Utils.MessageBox.ShowException(e);
+                    Utils. MessageBox.ShowException(e);
                 }
                 finally
                 {
-                    if (!_isClosing)
+                    if (!is_Closing)
                     {
                         MessageBox.Show("Đã xảy ra lỗi: máy chủ không thể truy cập được nữa.", "Lỗi - Máy chủ không thể truy cập được", MessageBoxButton.OK, MessageBoxImage.Error);
                         Disconnect();
-                        Application.Current.Dispatcher.Invoke(() =>
-                        {
-                            ((MainWindow)Application.Current.MainWindow).SetView<MainView>();
-                        });
                     }
                 }
             });
@@ -114,30 +110,30 @@ namespace Werewolf.Network
 
         public void SendEvent<TEventArgs>(TEventArgs args) where TEventArgs : ClientToServerEventArgs
         {
-            _packets.Send(new PacketEvent(args));
+            PManager_Packets.Send(new PacketEvent(args));
         }
 
         public dynamic ExpectEvent()
         {
-            return _packets.Expect<PacketEvent>().EventArgs;
+            return PManager_Packets.Expect<PacketEvent>().EventArgs;
         }
 
         public void Disconnect(bool isClosing = false)
         {
-            _isClosing = isClosing;
-            if (_packets != null)
-                _packets.Close();
+            is_Closing = isClosing;
+            if (PManager_Packets != null)
+                PManager_Packets.Close();
 
-            if (_client.Connected)
+            if (Socket_Client.Connected)
             {
                 try
                 {
-                    _client.Shutdown(SocketShutdown.Both);
+                    Socket_Client.Shutdown(SocketShutdown.Both);
                 }
                 catch { }
                 finally
                 {
-                    _client.Close();
+                    Socket_Client.Close();
                 }
             }
 

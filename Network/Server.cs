@@ -1,4 +1,4 @@
-﻿using System;
+﻿﻿using System;
 using System.Collections.Generic;
 using System.IO;
 using System.Linq;
@@ -9,60 +9,61 @@ using System.Threading.Tasks;
 
 using Werewolf.Network.Events;
 using Werewolf.Network.Exceptions;
+using Werewolf.Utils;
 
 namespace Werewolf.Network
 {
     public class Server
     {
         #region Singleton
-        private static Server _instance = null;
+        private static Server instance = null;
         public static Server Instance
         {
             get
             {
-                if (_instance == null)
-                    _instance = new Server();
-                return _instance;
+                if (instance == null)
+                    instance = new Server();
+                return instance;
             }
         }
         #endregion Singleton
 
         public const int DEFAULT_PORT = 8888;
 
-        private readonly Socket _server;
-        private readonly List<User> _users;
-        private readonly EventManager<ClientToServerEventArgs> _userEvents;
+        private readonly Socket Socket_Server;
+        private readonly List<User> List_Users;
+        private readonly EventManager<ClientToServerEventArgs> User_Events;
 
         public bool Started { get; private set; }
         public EventManager<ServerEventArgs> ServerEvents { get; }
 
         private Server()
         {
-            _server = new Socket(AddressFamily.InterNetwork, SocketType.Stream, ProtocolType.Tcp);
-            _users = new List<User>();
-            _userEvents = new EventManager<ClientToServerEventArgs>();
+            Socket_Server = new Socket(AddressFamily.InterNetwork, SocketType.Stream, ProtocolType.Tcp);
+            List_Users = new List<User>();
+            User_Events = new EventManager<ClientToServerEventArgs>();
             ServerEvents = new EventManager<ServerEventArgs>();
 
-            _userEvents.AddListener<SendChatMessageEventArgs>((sender, e) =>
+            User_Events.Add_Listener<SendChatMessageEventArgs>((sender, e) =>
             {
                 SendEvent(new ChatMessageSentEventArgs(((User)sender).Name, e.Message));
             });
 
-            ServerEvents.AddListener<ServerUserConnectedEventArgs>((sender, e) =>
+            ServerEvents.Add_Listener<ServerUserConnectedEventArgs>((sender, e) =>
             {
                 SendEvent(new UserJoinedEventArgs(e.User.Name));
-                _users.Add(e.User);
+                List_Users.Add(e.User);
                 ListenUserEvents(e.User);
                 e.User.SendEvent(new ChatMessageSentEventArgs(string.Empty, $"Chào mừng đến trò chơi, {e.User.Name}!"));
-                e.User.SendEvent(new UserListSetEventArgs(_users.Select((u) => u.Name).ToArray()));
-                Game.Game.Instance.AddPlayer(e.User);
+                e.User.SendEvent(new UserListSetEventArgs(List_Users.Select((u) => u.Name).ToArray()));
+                Game.Game.Instance.Add_Player(e.User);
             });
 
-            ServerEvents.AddListener<ServerUserDisconnectedEventArgs>((sender, e) =>
+            ServerEvents.Add_Listener<ServerUserDisconnectedEventArgs>((sender, e) =>
             {
-                _users.Remove(e.User);
+                List_Users.Remove(e.User);
                 SendEvent(new UserLeftEventArgs(e.User.Name));
-                Game.Game.Instance.RemovePlayer(e.User);
+                Game.Game.Instance.Del_Players(e.User);
             });
         }
         private string GetIPAddress()
@@ -84,11 +85,11 @@ namespace Werewolf.Network
         public void Start(int port = DEFAULT_PORT)
         {
             string ip = GetIPAddress();
-            if (_server.Connected) return;
+            if (Socket_Server.Connected) return;
             Started = true;
 
-            _server.Bind(new IPEndPoint(IPAddress.Parse(ip), port));
-            _server.Listen(10);
+            Socket_Server.Bind(new IPEndPoint(IPAddress.Parse(ip), port));
+            Socket_Server.Listen(10);
             ListenConnexions();
         }
 
@@ -104,8 +105,8 @@ namespace Werewolf.Network
 
                         try
                         {
-                            user = new User(_server.Accept(), _users.ToArray());
-                            ServerEvents.RaiseEvent(this, new ServerUserConnectedEventArgs((user)));
+                            user = new User(Socket_Server.Accept(), List_Users.ToArray());
+                            ServerEvents.Raise_Event(this, new ServerUserConnectedEventArgs((user)));
                         }
                         catch (NameAlreadyTakenException)
                         {
@@ -117,7 +118,7 @@ namespace Werewolf.Network
                     e is SocketException ||
                     e is ObjectDisposedException)
                 {
-                    Utils.MessageBox.ShowException(e);
+                    MessageBox.ShowException(e);
                 }
             });
         }
@@ -130,7 +131,7 @@ namespace Werewolf.Network
                 {
                     while (true)
                     {
-                        _userEvents.RaiseEvent(user, user.ExpectEvent());
+                        User_Events.Raise_Event(user, user.ExpectEvent());
                     }
                 }
                 catch (Exception e) when (
@@ -139,12 +140,12 @@ namespace Werewolf.Network
                     e is ObjectDisposedException ||
                     e is IOException)
                 {
-                    Utils.MessageBox.ShowException(e);
+                    MessageBox.ShowException(e);
                 }
                 finally
                 {
                     if (!user.IsHost)
-                        ServerEvents.RaiseEvent(new ServerUserDisconnectedEventArgs((user)));
+                        ServerEvents.Raise_Event(new ServerUserDisconnectedEventArgs((user)));
                 }
 
             });
@@ -152,19 +153,19 @@ namespace Werewolf.Network
 
         public void SendEvent<TEventArgs>(TEventArgs args) where TEventArgs : ServerToClientEventArgs
         {
-            foreach (User user in _users)
+            foreach (User user in List_Users)
                 user.SendEvent(args);
         }
 
         public void Stop(bool isClosing = false)
         {
-            foreach (User user in _users)
+            foreach (User user in List_Users)
                 user.Disconnect();
-            _users.Clear();
+            List_Users.Clear();
 
-            if (!_server.Connected) return;
+            if (!Socket_Server.Connected) return;
 
-            _server.Disconnect(!isClosing);
+            Socket_Server.Disconnect(!isClosing);
         }
     }
 }
