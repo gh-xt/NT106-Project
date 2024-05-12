@@ -30,6 +30,7 @@ namespace Werewolf.Views
         /// </summary>
         private void InitializeComponent()
         {
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(GameSettingsWindow));
             this.label1 = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
             this.AvailableRoleList = new System.Windows.Forms.ListBox();
@@ -78,6 +79,7 @@ namespace Werewolf.Views
             // 
             // AddRoleBtn
             // 
+            this.AddRoleBtn.Image = ((System.Drawing.Image)(resources.GetObject("AddRoleBtn.Image")));
             this.AddRoleBtn.Location = new System.Drawing.Point(186, 161);
             this.AddRoleBtn.Name = "AddRoleBtn";
             this.AddRoleBtn.Size = new System.Drawing.Size(75, 32);
@@ -86,6 +88,7 @@ namespace Werewolf.Views
             // 
             // RemoveRoleBtn
             // 
+            this.RemoveRoleBtn.Image = ((System.Drawing.Image)(resources.GetObject("RemoveRoleBtn.Image")));
             this.RemoveRoleBtn.Location = new System.Drawing.Point(186, 206);
             this.RemoveRoleBtn.Name = "RemoveRoleBtn";
             this.RemoveRoleBtn.Size = new System.Drawing.Size(75, 32);

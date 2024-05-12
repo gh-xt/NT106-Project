@@ -138,7 +138,7 @@ namespace Werewolf.Views
         {
             if (!Client.Instance.IsHost) return;
 
-            GameSettingsWindow gameSettingsWindow = new GameSettingsWindow(); // Tạo cửa sổ cài đặt trò chơi
+            GameSettingsWindow gameSettingsWindow = new GameSettingsWindow(_window); // Tạo cửa sổ cài đặt trò chơi
             gameSettingsWindow.SetRoomView(this); // Đặt RoomView cho cửa sổ cài đặt trò chơi
             gameSettingsWindow.ShowDialog(); // Hiển thị cửa sổ cài đặt trò chơi
         }
@@ -165,5 +165,6 @@ namespace Werewolf.Views
             Client.Instance.SendEvent(new SendChatMessageEventArgs(message)); // Gửi tin nhắn đến máy chủ
             Message.Text = string.Empty; // Xóa nội dung trong ô nhập tin nhắn
         }
+        public void EnableStartGameButton() => StartGame.Enabled = true;
     }
 }

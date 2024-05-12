@@ -21,6 +21,7 @@ namespace Werewolf.Views
         {
             InitializeComponent();
             InitializeForm(); // Khởi tạo form khi hiển thị lên
+
         }
 
 
