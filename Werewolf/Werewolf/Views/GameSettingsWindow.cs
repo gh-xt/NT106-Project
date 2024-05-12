@@ -16,5 +16,10 @@ namespace Werewolf.Views
         {
             InitializeComponent();
         }
+
+        private void ChosenRoleList_SelectedIndexChanged(object sender, EventArgs e)
+        {
+
+        }
     }
 }

@@ -132,6 +132,9 @@
       <AutoGen>True</AutoGen>
       <DependentUpon>Resources.resx</DependentUpon>
     </Compile>
+    <EmbeddedResource Include="Views\GameSettingsWindow.resx">
+      <DependentUpon>GameSettingsWindow.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Views\MainWindow.resx">
       <DependentUpon>MainWindow.cs</DependentUpon>
     </EmbeddedResource>
