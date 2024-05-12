@@ -35,5 +35,10 @@ namespace Werewolf.Views
                 RoleList.Items.Add(item);
             }
         }
+        public void SetUsers(string[] users)
+        {
+            foreach (string user in users)
+                UserList.Items.Add(user);
+        }
     }
 }

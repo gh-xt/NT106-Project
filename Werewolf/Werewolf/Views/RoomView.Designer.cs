@@ -36,7 +36,7 @@
             this.ChatBox = new System.Windows.Forms.RichTextBox();
             this.Message = new System.Windows.Forms.TextBox();
             this.label1 = new System.Windows.Forms.Label();
-            this.textBox1 = new System.Windows.Forms.TextBox();
+            this.IPAddress = new System.Windows.Forms.TextBox();
             this.SuspendLayout();
             // 
             // UserList
@@ -70,7 +70,6 @@
             this.SendMessage.TabIndex = 2;
             this.SendMessage.Text = "Gửi";
             this.SendMessage.UseVisualStyleBackColor = true;
-
             // 
             // SettingsBtn
             // 
@@ -83,7 +82,6 @@
             this.SettingsBtn.TabIndex = 3;
             this.SettingsBtn.Text = "Cài đặt";
             this.SettingsBtn.UseVisualStyleBackColor = true;
-
             // 
             // ChatBox
             // 
@@ -116,22 +114,22 @@
             this.label1.TabIndex = 6;
             this.label1.Text = "Kết nối với phòng: ";
             // 
-            // textBox1
+            // IPAddress
             // 
-            this.textBox1.BackColor = System.Drawing.SystemColors.Control;
-            this.textBox1.BorderStyle = System.Windows.Forms.BorderStyle.None;
-            this.textBox1.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.textBox1.Location = new System.Drawing.Point(123, 17);
-            this.textBox1.Name = "textBox1";
-            this.textBox1.Size = new System.Drawing.Size(165, 15);
-            this.textBox1.TabIndex = 7;
+            this.IPAddress.BackColor = System.Drawing.SystemColors.Control;
+            this.IPAddress.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            this.IPAddress.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.IPAddress.Location = new System.Drawing.Point(123, 17);
+            this.IPAddress.Name = "IPAddress";
+            this.IPAddress.Size = new System.Drawing.Size(165, 15);
+            this.IPAddress.TabIndex = 7;
             // 
             // RoomView
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(675, 447);
-            this.Controls.Add(this.textBox1);
+            this.Controls.Add(this.IPAddress);
             this.Controls.Add(this.label1);
             this.Controls.Add(this.Message);
             this.Controls.Add(this.ChatBox);
@@ -155,7 +153,7 @@
         private System.Windows.Forms.RichTextBox ChatBox;
         private System.Windows.Forms.TextBox Message;
         private System.Windows.Forms.Label label1;
-        private System.Windows.Forms.TextBox textBox1;
+        private System.Windows.Forms.TextBox IPAddress;
 
     }
 }
