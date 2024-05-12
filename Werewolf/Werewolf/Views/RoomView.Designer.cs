@@ -28,7 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
-            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Room));
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(RoomView));
             this.UserList = new System.Windows.Forms.ListBox();
             this.StartGame = new System.Windows.Forms.Button();
             this.SendMessage = new System.Windows.Forms.Button();
