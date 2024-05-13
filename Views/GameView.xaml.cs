@@ -22,17 +22,18 @@ namespace Werewolf.Views
         private bool _actionActivated;
         private string _myRole;
         private bool _isDead;
-        private readonly MainWindow _window;
-        private bool _hasScroll;
+        private readonly MainWindow main_Window;
+        private bool has_Scroll;
 
     public GameView(MainWindow window)
         {
             InitializeComponent();
-            _window = window;
-            _hasScroll = false;
+            main_Window = window;
+            has_Scroll = false;
             _voteActivated = false;
             _actionActivated = false;
             _isDead = false;
+            List<Player> players = Game.Game.Instance.Get_Players();
 
             ChatBox.Document.Blocks.Clear();
 
@@ -116,7 +117,7 @@ namespace Werewolf.Views
                 paragraph.Inlines.Add(inline);
 
             ChatBox.Document.Blocks.Add(paragraph);
-            if (!_hasScroll || ChatBox.VerticalOffset == (ChatBox.ExtentHeight - ChatBox.ViewportHeight))
+            if (!has_Scroll || ChatBox.VerticalOffset == (ChatBox.ExtentHeight - ChatBox.ViewportHeight))
                 ChatBox.ScrollToEnd();
         }
 
@@ -128,7 +129,7 @@ namespace Werewolf.Views
             });
         }
 
-        private void ChatBox_Scroll(object sender, ScrollEventArgs e) => _hasScroll = true;
+        private void ChatBox_Scroll(object sender, ScrollEventArgs e) => has_Scroll = true;
 
         private void SendMessage_Click(object sender, RoutedEventArgs e)
         {
@@ -169,7 +170,31 @@ namespace Werewolf.Views
 
         private void ActionBtn(object sender, RoutedEventArgs e)
         {
+            if (UserList.SelectedItem != null)
+            {
+                string selectedUser = UserList.SelectedItem.ToString();
+                Player player = Game.Game.Instance.Get_Players().FirstOrDefault(p => p.User.Name == selectedUser);
+                if (player != null)
+                {
+                    string role = player.Role.Name;
+                    if(role == "Hunter") {
 
+                    }
+                    else if(role == "Witch")
+                    {
+
+                    }
+                    else if(role == "Seer")
+                    {
+
+                    }
+                    else 
+                    {
+                        _actionActivated = false;
+                    }
+       
+                }
+            }
         }
         private void VoteWerewolf(ListBox listBox, User Voted)
         {
@@ -205,16 +230,6 @@ namespace Werewolf.Views
             }
             if (UserList.SelectedItem == null) return;
             DeathList.Items.Add (UserList.SelectedItem.ToString());
-        }
-
-        private void UserList_SelectionChanged(object sender, SelectionChangedEventArgs e)
-        {
-
-        }
-
-        private void ListBox_SelectionChanged(object sender, SelectionChangedEventArgs e)
-        {
-
         }
     }
 }

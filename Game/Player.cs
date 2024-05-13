@@ -9,6 +9,7 @@ namespace Werewolf.Game
         private Role pri_Role;
         private Tag pri_Tag;
         private Team override_Team;
+        private bool pri_IsDead;
 
         public string Name => User.Name;
         public Role Role
@@ -24,6 +25,7 @@ namespace Werewolf.Game
             pri_Role = null;
             pri_Tag = Werewolf.Game.Tag.NONE;
             override_Team = null;
+            pri_IsDead = false;
         }
 
         public void RemoveTag(Tag tag) => pri_Tag ^= tag;

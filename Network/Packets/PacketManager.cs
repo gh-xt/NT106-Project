@@ -4,26 +4,26 @@ namespace Werewolf.Network.Packets
 {
     public class PacketManager
     {
-        private readonly Stream _stream;
+        private readonly Stream pri_Stream;
 
         public PacketManager(Stream stream)
         {
-            _stream = stream;
+            pri_Stream = stream;
         }
 
         public void Send(Packet packet)
         {
-            packet.Send(_stream);
+            packet.Send(pri_Stream);
         }
 
         public TPacket Expect<TPacket>() where TPacket : Packet
         {
-            return Packet.Receive<TPacket>(_stream);
+            return Packet.Receive<TPacket>(pri_Stream);
         }
 
         public void Close()
         {
-            _stream.Close();
+            pri_Stream.Close();
         }
     }
 }
