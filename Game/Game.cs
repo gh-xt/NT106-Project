@@ -38,6 +38,10 @@ namespace Werewolf.Game
         public void Add_Player(User user) => players.Add(new Player(user));
         public void Del_Players(string name) => players.RemoveAll((p) => p.Name == name);
         public void Del_Players(User user) => Del_Players(user.Name);
+        public enum PeriodEnum
+        {
+
+        }
         public List<Player> Get_Players() => players;
 
         public void Add_Role(Role role) => Roles.Add(role);

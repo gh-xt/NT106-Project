@@ -10,6 +10,7 @@ using System.Windows.Media;
 using Werewolf.Game;
 using Werewolf.Network;
 using Werewolf.Network.Events;
+using WerewolfClient;
 
 namespace Werewolf.Views
 {
@@ -18,6 +19,8 @@ namespace Werewolf.Views
     /// </summary>
     public partial class GameView : UserControl
     {
+        private int _currentDay;
+        private int _currentTime;
         private bool _voteActivated;
         private bool _actionActivated;
         private string _myRole;
@@ -167,9 +170,34 @@ namespace Werewolf.Views
 
         }
 
-        private void ActionBtn(object sender, RoutedEventArgs e)
+        private void ActioBtn(object sender, RoutedEventArgs e)
         {
+            if (UserList.SelectedItem != null)
+            {
+                string selectedUser = UserList.SelectedItem.ToString();
+                Player player = Game.Game.Instance.Get_Players().FirstOrDefault(p => p.User.Name == selectedUser);
+                if (player != null)
+                {
+                    string role = player.Role.Name;
+                    if (role == "Hunter")
+                    {
 
+                    }
+                    else if (role == "Witch")
+                    {
+
+                    }
+                    else if (role == "Seer")
+                    {
+
+                    }
+                    else
+                    {
+                        _actionActivated = false;
+                    }
+
+                }
+            }
         }
         private void VoteWerewolf(ListBox listBox, Player Voted)
         {
@@ -187,8 +215,150 @@ namespace Werewolf.Views
             foreach (ListBoxItem listBoxItem in list)
                 collection.Add(listBoxItem);
         }
+        /*public void Notify(Model m)
+        {
+            if (m is WerewolfModel)
+            {
+                WerewolfModel wm = (WerewolfModel)m;
+                switch (wm.Event)
+                {
+                    case EventEnum.GameStopped:
+                        AddChatMessage("Game is finished, outcome is " + wm.EventPayloads["Game.Outcome"]);
+                        _updateTimer.Enabled = false;
+                        break;
+                    case EventEnum.GameStarted:
+                        players = wm.Players;
+                        _myRole = wm.EventPayloads["Player.Role.Name"];
+                        AddChatMessage("Your role is " + Role + ".");
+                        _currentPeriod = Game.PeriodEnum.Night;
+                        EnableButton(Action, true);
+                        switch (_myRole)
+                        {
+                            case WerewolfModel.ROLE_PRIEST:
+                                Action.Text = WerewolfModel.ACTION_HOLYWATER;
+                                break;
+                            case WerewolfModel.ROLE_GUNNER:
+                                Action.Text = WerewolfModel.ACTION_SHOOT;
+                                break;
+                            case WerewolfModel.ROLE_JAILER:
+                                Action.Text = WerewolfModel.ACTION_JAIL;
+                                break;
+                            case WerewolfModel.ROLE_WEREWOLF_SHAMAN:
+                                Action.Text = WerewolfModel.ACTION_ENCHANT;
+                                break;
+                            case WerewolfModel.ROLE_BODYGUARD:
+                                Action.Text = WerewolfModel.ACTION_GUARD;
+                                break;
+                            case WerewolfModel.ROLE_DOCTOR:
+                                Action.Text = WerewolfModel.ACTION_HEAL;
+                                break;
+                            case WerewolfModel.ROLE_SERIAL_KILLER:
+                                Action.Text = WerewolfModel.ACTION_KILL;
+                                break;
+                            case WerewolfModel.ROLE_SEER:
+                            case WerewolfModel.ROLE_WEREWOLF_SEER:
+                                Action.Text = WerewolfModel.ACTION_REVEAL;
+                                break;
+                            case WerewolfModel.ROLE_AURA_SEER:
+                                Action.Text = WerewolfModel.ACTION_AURA;
+                                break;
+                            case WerewolfModel.ROLE_MEDIUM:
+                                Action.Text = WerewolfModel.ACTION_REVIVE;
+                                break;
+                            default:
+                                EnableButton(Action, false);
+                                break;
+                        }
+                        break;
+                    case EventEnum.SwitchToDayTime:
+                        AddChatMessage("Switch to day time of day #" + wm.EventPayloads["Game.Current.Day"] + ".");
+                        _currentPeriod = Game.PeriodEnum.Day;
+                        LBPeriod.Text = "Day time of";
+                        break;
+                    case EventEnum.SwitchToNightTime:
+                        AddChatMessage("Switch to night time of day #" + wm.EventPayloads["Game.Current.Day"] + ".");
+                        _currentPeriod = Game.PeriodEnum.Night;
+                        LBPeriod.Text = "Night time of";
+                        break;
+                    case EventEnum.UpdateDay:
+                        // TODO  catch parse exception here
+                        string tempDay = wm.EventPayloads["Game.Current.Day"];
+                        _currentDay = int.Parse(tempDay);
+                        LBDay.Text = tempDay;
+                        break;
+                    case EventEnum.UpdateTime:
+                        string tempTime = wm.EventPayloads["Game.Current.Time"];
+                        _currentTime = int.Parse(tempTime);
+                        LBTime.Text = tempTime;
+                        UpdateAvatar(wm);
+                        break;
+                    case EventEnum.Vote:
+                        if (wm.EventPayloads["Success"] == WerewolfModel.TRUE)
+                        {
+                            AddChatMessage("Your vote is registered.");
+                        }
+                        else
+                        {
+                            AddChatMessage("You can't vote now.");
+                        }
+                        break;
+                    case EventEnum.Action:
+                        if (wm.EventPayloads["Success"] == WerewolfModel.TRUE)
+                        {
+                            AddChatMessage("Your action is registered.");
+                        }
+                        else
+                        {
+                            AddChatMessage("You can't perform action now.");
+                        }
+                        break;
+                    case EventEnum.YouShotDead:
+                        AddChatMessage("You're shot dead by gunner.");
+                        _isDead = true;
+                        break;
+                    case EventEnum.OtherShotDead:
+                        AddChatMessage(wm.EventPayloads["Game.Target.Name"] + " was shot dead by gunner.");
+                        break;
+                    case EventEnum.Alive:
+                        AddChatMessage(wm.EventPayloads["Game.Target.Name"] + " has been revived by medium.");
+                        if (wm.EventPayloads["Game.Target.Id"] == null)
+                        {
+                            _isDead = false;
+                        }
+                        break;
+                    case EventEnum.ChatMessage:
+                        if (wm.EventPayloads["Success"] == WerewolfModel.TRUE)
+                        {
+                            AddChatMessage(wm.EventPayloads["Game.Chatter"] + ":" + wm.EventPayloads["Game.ChatMessage"]);
+                        }
+                        break;
+                    case Chat:
+                        if (wm.EventPayloads["Success"] == WerewolfModel.FALSE)
+                        {
+                            switch (wm.EventPayloads["Error"])
+                            {
+                                case "403":
+                                    AddChatMessage();
+                                    break;
+                                case "404":
+                                    AddChatMessage();
+                                    break;
+                                case "405":
+                                    AddChatMessage();
+                                    break;
+                                case "406":
+                                    AddChatMessage();
+                                    break;
+                            }
+                        }
+                        break;
+                }
+            }
+        }*/
         private void VoteBtn(object sender, RoutedEventArgs e)
         {
+            string selectedUser = UserList.SelectedItem.ToString();
+            Player player = Game.Game.Instance.Get_Players().FirstOrDefault(p => p.User.Name == selectedUser);
             if (_voteActivated)
             {
                 Vote.Background = Brushes.Gray;
@@ -208,9 +378,12 @@ namespace Werewolf.Views
 
             int index = UserList.SelectedIndex;
             Player players = (Player)(((ListBoxItem)UserList.Items[index]).DataContext);
-
+            string role = player.Role.Name;
             VoteWerewolf(DeathList, players);
-
+            if (role == "Werewolf")
+            {
+                
+            }
         }
 
         private void UserList_SelectionChanged(object sender, SelectionChangedEventArgs e)
