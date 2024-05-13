@@ -94,7 +94,7 @@ namespace Werewolf.Game
             for (int i = 15; i >= -1; --i)
             {
                 SendEvent(new TimerUpdatedEventArgs(i));
-                await Task.Delay(1000);
+                await Task.Delay(100000);
             }
         }
     }

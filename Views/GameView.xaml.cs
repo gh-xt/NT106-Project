@@ -171,7 +171,7 @@ namespace Werewolf.Views
         {
 
         }
-        private void VoteWerewolf(ListBox listBox, User Voted)
+        private void VoteWerewolf(ListBox listBox, Player Voted)
         {
             ItemCollection collection = listBox.Items;
 
@@ -204,13 +204,13 @@ namespace Werewolf.Views
                 _actionActivated = false;
             }
             if (UserList.SelectedItem == null) return;
-            DeathList.Items.Add (UserList.SelectedItem.ToString());
+            //DeathList.Items.Add (UserList.SelectedItem.ToString());
 
-            Message.Text = Message.Text.Trim();
-            if (string.IsNullOrWhiteSpace(Message.Text)) return;
+            int index = UserList.SelectedIndex;
+            Player players = (Player)(((ListBoxItem)UserList.Items[index]).DataContext);
 
-            Client.Instance.SendEvent(new SendChatMessageEventArgs(Message.Text));
-            Message.Text = string.Empty;
+            VoteWerewolf(DeathList, players);
+
         }
 
         private void UserList_SelectionChanged(object sender, SelectionChangedEventArgs e)

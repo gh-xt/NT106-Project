@@ -22,8 +22,6 @@ namespace Werewolf.Network.Packets
     public class PacketEvent : Packet
     {
         public dynamic EventArgs { get; }
-
-        public PacketEvent() { }
         public PacketEvent(EventArgs args)
         {
             EventArgs = args;

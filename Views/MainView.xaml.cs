@@ -12,12 +12,12 @@ namespace Werewolf.Views
     /// </summary>
     public partial class MainView : UserControl
     {
-        private readonly MainWindow _window;
+        private readonly MainWindow main_Window;
 
         public MainView(MainWindow window)
         {
             InitializeComponent();
-            _window = window;
+            main_Window = window;
         }
         private string GetIPAddress()
         {
@@ -63,7 +63,7 @@ namespace Werewolf.Views
                 Server.Instance.Start();
 
             if (Client.Instance.Connect(UserName.Text, ipAddress))
-                _window.SetView<RoomView>();
+                main_Window.SetView<RoomView>();
             else
             {
                 MessageBox.Show("Tên người dùng bạn chọn đã được sử dụng!", "Lỗi - Tên người dùng đã sử dụng", MessageBoxButton.OK, MessageBoxImage.Error);
