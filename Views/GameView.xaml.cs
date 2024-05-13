@@ -205,6 +205,12 @@ namespace Werewolf.Views
             }
             if (UserList.SelectedItem == null) return;
             DeathList.Items.Add (UserList.SelectedItem.ToString());
+
+            Message.Text = Message.Text.Trim();
+            if (string.IsNullOrWhiteSpace(Message.Text)) return;
+
+            Client.Instance.SendEvent(new SendChatMessageEventArgs(Message.Text));
+            Message.Text = string.Empty;
         }
 
         private void UserList_SelectionChanged(object sender, SelectionChangedEventArgs e)
