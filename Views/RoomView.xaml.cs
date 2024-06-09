@@ -1,4 +1,5 @@
-﻿using System.Linq;
+﻿using Werewolf;
+using System.Linq;
 using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Controls;
@@ -61,6 +62,9 @@ namespace Werewolf.Views
                 Dispatcher.Invoke(() =>
                 {
                     GameView view = _window.SetView<GameView>();
+                    GamePlay t1 = new GamePlay();
+                    t1.Show();
+                    t1.SetUsers(UserList.Items.Cast<string>().ToArray());
                     view.SetRoles(e.RoleIds);
                     view.SetUsers(UserList.Items.Cast<string>().ToArray());
                 });
@@ -134,6 +138,11 @@ namespace Werewolf.Views
         public void EnableStartGameButton() => StartGame.IsEnabled = true;
 
         private void ChatBox_TextChanged(object sender, TextChangedEventArgs e)
+        {
+
+        }
+
+        private void UserList_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
 
         }

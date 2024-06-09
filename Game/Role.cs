@@ -14,7 +14,6 @@ namespace Werewolf.Game
         }
         public static Role[] GetAllRoles() => allRoles.Values.ToArray();
 
-        public static Role Hunter;
         public static Role Seer;
         public static Role Villager;
         public static Role Werewolf;
@@ -24,8 +23,6 @@ namespace Werewolf.Game
         {
             allRoles = new Dictionary<int, Role>();
 
-            Hunter = new Role(1, "Thợ săn", Team.Village, true,
-                "Khi bạn chết, bạn có thể giết một người.");
             Seer = new Role(3, "Tiên tri", Team.Village, true,
                 "Mỗi đêm bạn có thể khám phá vai trò của người chơi mà bạn chọn.");
             Villager = new Role(4, "Dân làng", Team.Village, false,

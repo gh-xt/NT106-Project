@@ -54,6 +54,8 @@
   <ItemGroup>
     <Reference Include="System" />
     <Reference Include="System.Data" />
+    <Reference Include="System.Drawing" />
+    <Reference Include="System.Windows.Forms" />
     <Reference Include="System.Xml" />
     <Reference Include="Microsoft.CSharp" />
     <Reference Include="System.Core" />
@@ -81,6 +83,7 @@
     <Compile Include="Game\Role.cs" />
     <Compile Include="Game\Team.cs" />
     <Compile Include="Game\Tag.cs" />
+    <Compile Include="Network\Events\ServerToClientEvents\GenerateEventArgs.cs" />
     <Compile Include="Network\Events\ServerToClientEvents\GameStartedEventArgs.cs" />
     <Compile Include="Network\Events\ServerToClientEvents\SetRoleEventArgs.cs" />
     <Compile Include="Network\Events\ServerToClientEvents\TimerUpdatedEventArgs.cs" />
@@ -104,7 +107,12 @@
     <Compile Include="Network\Exceptions\UnexpectedPacketException.cs" />
     <Compile Include="Network\Packets\Packet.cs" />
     <Compile Include="Network\Packets\PacketManager.cs" />
-    <Compile Include="Views\Controller.cs" />
+    <Compile Include="Views\GamePlay.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Views\GamePlay.Designer.cs">
+      <DependentUpon>GamePlay.cs</DependentUpon>
+    </Compile>
     <Compile Include="Views\GameView.xaml.cs">
       <DependentUpon>GameView.xaml</DependentUpon>
     </Compile>
@@ -117,7 +125,6 @@
     <Compile Include="Views\GameSettingsWindow.xaml.cs">
       <DependentUpon>GameSettingsWindow.xaml</DependentUpon>
     </Compile>
-    <Compile Include="Views\WerewolfController.cs" />
     <Page Include="Views\GameView.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
@@ -165,6 +172,9 @@
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>
       <LastGenOutput>Resources.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Views\GamePlay.resx">
+      <DependentUpon>GamePlay.cs</DependentUpon>
     </EmbeddedResource>
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
